@@ -18,6 +18,8 @@ import { CardsGridVisual } from "./CardsGridVisual";
 import { TimelineVisual } from "./TimelineVisual";
 import { NeuralPredictionVisual } from "./NeuralPredictionVisual";
 import { SddSpecVisual } from "./SddSpecVisual";
+import { MemoryAmnesiaVisual } from "./MemoryAmnesiaVisual";
+import { EngramCtaVisual } from "./EngramCtaVisual";
 import { HeroVisual } from "./HeroVisual";
 
 interface Props {
@@ -64,6 +66,10 @@ export function VisualRenderer({ slide, module }: Props) {
       return <NeuralPredictionVisual data={data} accent={accent} />;
     case "sdd-spec-flow":
       return <SddSpecVisual data={data} accent={accent} />;
+    case "memory-amnesia":
+      return <MemoryAmnesiaVisual data={data} accent={accent} />;
+    case "engram-cta":
+      return <EngramCtaVisual data={data} accent={accent} />;
     case "hero":
       return <HeroVisual data={data} accent={accent} />;
     default:

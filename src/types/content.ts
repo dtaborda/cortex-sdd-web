@@ -29,6 +29,8 @@ export type VisualType =
   | "text-only"
   | "neural-prediction"
   | "sdd-spec-flow"
+  | "memory-amnesia"
+  | "engram-cta"
   | "hero";
 
 export interface SlideDefinition {
