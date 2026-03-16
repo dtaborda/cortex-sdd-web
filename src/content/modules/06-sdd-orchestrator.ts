@@ -22,7 +22,23 @@ export const sddOrchestratorModule: ModuleDefinition = {
         "Sin especificación, \"terminado\" es una opinión. Con especificación, es un hecho verificable.",
       nextBridge:
         "Y el que coordina todo esto no programa una sola línea.",
-      visualType: "hero",
+      visualType: "sdd-spec-flow",
+      visualData: {
+        chaosItems: [
+          "¿Está terminado?",
+          "// TODO: fix later",
+          "prompt → código → 🤞",
+          "Sin criterio de validación",
+        ],
+        pipeline: [
+          { step: "SPEC", label: "Qué debe hacer", icon: "file-text" },
+          { step: "DESIGN", label: "Cómo se construye", icon: "compass" },
+          { step: "IMPLEMENT", label: "Código real", icon: "code" },
+          { step: "VERIFY", label: "Validado contra spec", icon: "check-circle" },
+        ],
+        sourceOfTruth:
+          "La spec es el contrato. Todo se mide contra ella.",
+      },
       tags: ["sdd", "specs", "framework"],
     },
     {

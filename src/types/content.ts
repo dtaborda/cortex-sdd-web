@@ -28,6 +28,7 @@ export type VisualType =
   | "outcome-comparison"
   | "text-only"
   | "neural-prediction"
+  | "sdd-spec-flow"
   | "hero";
 
 export interface SlideDefinition {

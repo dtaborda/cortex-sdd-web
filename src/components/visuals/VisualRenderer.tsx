@@ -17,6 +17,7 @@ import { OutcomeComparisonVisual } from "./OutcomeComparisonVisual";
 import { CardsGridVisual } from "./CardsGridVisual";
 import { TimelineVisual } from "./TimelineVisual";
 import { NeuralPredictionVisual } from "./NeuralPredictionVisual";
+import { SddSpecVisual } from "./SddSpecVisual";
 import { HeroVisual } from "./HeroVisual";
 
 interface Props {
@@ -61,6 +62,8 @@ export function VisualRenderer({ slide, module }: Props) {
       return <TimelineVisual data={data} accent={accent} />;
     case "neural-prediction":
       return <NeuralPredictionVisual data={data} accent={accent} />;
+    case "sdd-spec-flow":
+      return <SddSpecVisual data={data} accent={accent} />;
     case "hero":
       return <HeroVisual data={data} accent={accent} />;
     default:
