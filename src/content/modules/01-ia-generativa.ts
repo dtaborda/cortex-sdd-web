@@ -22,7 +22,24 @@ export const iaGenerativaModule: ModuleDefinition = {
         "El modelo es el motor. Sin volante, sin mapa, sin destino. La arquitectura es lo que convierte predicción en sistema.",
       nextBridge:
         "Para entender qué podemos construir, primero veamos cómo funciona esa predicción por dentro.",
-      visualType: "hero",
+      visualType: "neural-prediction",
+      visualData: {
+        inputTokens: ["El", "contexto", "define", "la"],
+        layers: [
+          "Embedding",
+          "Attention",
+          "FFN",
+          "Attention",
+          "FFN",
+          "Output",
+        ],
+        outputPredictions: [
+          { token: "respuesta", probability: 72 },
+          { token: "calidad", probability: 15 },
+          { token: "salida", probability: 8 },
+          { token: "nada", probability: 5 },
+        ],
+      },
       tags: ["fundamentos", "llm", "predicción"],
     },
     {

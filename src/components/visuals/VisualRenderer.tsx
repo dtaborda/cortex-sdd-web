@@ -16,6 +16,7 @@ import { SkillsLoadingVisual } from "./SkillsLoadingVisual";
 import { OutcomeComparisonVisual } from "./OutcomeComparisonVisual";
 import { CardsGridVisual } from "./CardsGridVisual";
 import { TimelineVisual } from "./TimelineVisual";
+import { NeuralPredictionVisual } from "./NeuralPredictionVisual";
 import { HeroVisual } from "./HeroVisual";
 
 interface Props {
@@ -58,6 +59,8 @@ export function VisualRenderer({ slide, module }: Props) {
       return <CardsGridVisual data={data} accent={accent} />;
     case "timeline":
       return <TimelineVisual data={data} accent={accent} />;
+    case "neural-prediction":
+      return <NeuralPredictionVisual data={data} accent={accent} />;
     case "hero":
       return <HeroVisual data={data} accent={accent} />;
     default:

@@ -27,6 +27,7 @@ export type VisualType =
   | "skills-loading"
   | "outcome-comparison"
   | "text-only"
+  | "neural-prediction"
   | "hero";
 
 export interface SlideDefinition {
