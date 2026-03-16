@@ -15,7 +15,7 @@ interface Role {
 
 export function RoleSpecializationVisual({ data }: Props) {
   const roles = (data.roles as Role[]) || [
-    { name: "Orchestrator", description: "Coordina y delega", color: "#D4AF37" },
+    { name: "Orchestrator", description: "Coordina y delega", color: "#00F0FF" },
     { name: "Spec Writer", description: "Define requisitos", color: "#3B82F6" },
     { name: "Designer", description: "Arquitectura técnica", color: "#10B981" },
     { name: "Implementer", description: "Escribe código", color: "#8B5CF6" },

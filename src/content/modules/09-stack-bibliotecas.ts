@@ -27,7 +27,7 @@ export const stackBibliotecasModule: ModuleDefinition = {
         satellites: [
           {
             label: "SDD",
-            color: "#D4AF37",
+            color: "#00F0FF",
             description: "Planificación estructurada por fases",
           },
           {
@@ -109,7 +109,7 @@ export const stackBibliotecasModule: ModuleDefinition = {
           {
             label: "Orquestación (SDD)",
             description: "Define fases, coordina sub-agentes",
-            color: "#D4AF37",
+            color: "#00F0FF",
           },
           {
             label: "Memoria (Engram)",

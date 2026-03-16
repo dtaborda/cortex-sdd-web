@@ -23,16 +23,16 @@ export function Header({
         "flex items-center justify-between px-5",
         "border-b border-border-subtle backdrop-blur-md"
       )}
-      style={{ backgroundColor: "rgba(9, 9, 11, 0.95)" }}
+      style={{ backgroundColor: "rgba(5, 5, 8, 0.95)" }}
     >
       {/* Left — Logo */}
       <div className="flex flex-col justify-center gap-0 min-w-[180px]">
         <span className="font-mono font-bold text-lg leading-tight tracking-tight">
-          <span className="text-text-primary">CORTE</span>
-          <span className="text-accent-gold">X</span>
+          <span className="text-accent-cyan">d</span>
+          <span className="text-text-primary">Taborda</span>
         </span>
         <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-text-muted leading-none">
-          De Chat a Sistema Cognitivo
+          Beyond the prompt.
         </span>
       </div>
 
@@ -77,7 +77,7 @@ export function Header({
             "flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-mono",
             "transition-colors duration-150",
             isFocusMode
-              ? "bg-accent-gold-dim text-accent-gold"
+              ? "bg-accent-cyan-dim text-accent-cyan"
               : "text-text-muted hover:text-text-secondary hover:bg-bg-elevated"
           )}
           title={isFocusMode ? "Exit focus mode (Esc)" : "Focus mode (F)"}

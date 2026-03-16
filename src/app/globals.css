@@ -1,44 +1,48 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════
-   CORTEX — De Chat a Sistema Cognitivo
+   dTaborda — Rompé el chat. Construí el sistema.
    Premium dark-mode educational experience
    ═══════════════════════════════════════════ */
 
 @theme {
   /* Background hierarchy */
-  --color-bg-base: #09090B;
-  --color-bg-surface: #18181B;
-  --color-bg-elevated: #27272A;
-  --color-bg-overlay: rgba(9, 9, 11, 0.8);
+  --color-bg-base: #050508;
+  --color-bg-surface: #0A0A0F;
+  --color-bg-elevated: #14141F;
+  --color-bg-overlay: rgba(5, 5, 8, 0.85);
   
   /* Border hierarchy */
-  --color-border-default: #3F3F46;
-  --color-border-subtle: #27272A;
-  --color-border-strong: #52525B;
+  --color-border-default: #1E1E2E;
+  --color-border-subtle: #14141F;
+  --color-border-strong: #2A2A3A;
   
   /* Text hierarchy */
-  --color-text-primary: #FAFAFA;
-  --color-text-secondary: #A1A1AA;
-  --color-text-muted: #71717A;
-  --color-text-ghost: #52525B;
+  --color-text-primary: #F0F0F5;
+  --color-text-secondary: #8888AA;
+  --color-text-muted: #555577;
+  --color-text-ghost: #333355;
   
-  /* Accent — Gold (primary brand) */
-  --color-accent-gold: #D4AF37;
-  --color-accent-gold-dim: rgba(212, 175, 55, 0.15);
-  --color-accent-gold-glow: rgba(212, 175, 55, 0.3);
+  /* Accent — Cyan (primary brand) */
+  --color-accent-cyan: #00F0FF;
+  --color-accent-cyan-dim: rgba(0, 240, 255, 0.08);
+  --color-accent-cyan-glow: rgba(0, 240, 255, 0.3);
+  
+  /* Accent — Hot (secondary brand) */
+  --color-accent-hot: #FF3366;
+  --color-accent-hot-dim: rgba(255, 51, 102, 0.15);
   
   /* Module accent colors */
-  --color-mod-amber: #F59E0B;
-  --color-mod-blue: #3B82F6;
-  --color-mod-emerald: #10B981;
-  --color-mod-orange: #F97316;
-  --color-mod-red: #EF4444;
-  --color-mod-gold: #D4AF37;
-  --color-mod-pink: #EC4899;
-  --color-mod-lime: #84CC16;
-  --color-mod-violet: #8B5CF6;
-  --color-mod-purple: #A855F7;
+  --color-mod-amber: #FFB800;
+  --color-mod-blue: #4D8DFF;
+  --color-mod-emerald: #00E5A0;
+  --color-mod-orange: #FF6B2B;
+  --color-mod-red: #FF3366;
+  --color-mod-gold: #00F0FF;
+  --color-mod-pink: #FF69B4;
+  --color-mod-lime: #7FFF00;
+  --color-mod-violet: #9B59FF;
+  --color-mod-purple: #C471FF;
   
   /* Typography scale */
   --font-display: "Inter", system-ui, -apple-system, sans-serif;
@@ -88,23 +92,23 @@ body {
 
 /* Focus styles */
 *:focus-visible {
-  outline: 2px solid var(--color-accent-gold);
+  outline: 2px solid var(--color-accent-cyan);
   outline-offset: 2px;
 }
 
 /* Selection */
 ::selection {
-  background-color: var(--color-accent-gold-dim);
+  background-color: rgba(0, 240, 255, 0.15);
   color: var(--color-text-primary);
 }
 
 /* Glow utility */
-.glow-gold {
-  box-shadow: 0 0 20px var(--color-accent-gold-dim), 0 0 40px rgba(212, 175, 55, 0.05);
+.glow-cyan {
+  box-shadow: 0 0 20px var(--color-accent-cyan-dim), 0 0 40px rgba(0, 240, 255, 0.05);
 }
 
 .glow-accent {
-  box-shadow: 0 0 20px var(--tw-shadow-color, rgba(212, 175, 55, 0.15));
+  box-shadow: 0 0 20px var(--tw-shadow-color, rgba(0, 240, 255, 0.15));
 }
 
 /* Grid line background */

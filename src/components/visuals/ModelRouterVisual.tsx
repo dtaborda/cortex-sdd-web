@@ -14,7 +14,7 @@ interface Model {
 }
 
 const TIER_COLORS: Record<string, string> = {
-  premium: "#D4AF37",
+  premium: "#00F0FF",
   balanced: "#3B82F6",
   fast: "#10B981",
   alternative: "#8B5CF6",

@@ -8,7 +8,7 @@ import { Sidebar } from "./Sidebar";
 import { ContentPane } from "./ContentPane";
 import { VisualPane } from "./VisualPane";
 
-const STORAGE_KEY = "cortex-state";
+const STORAGE_KEY = "dtaborda-state";
 
 interface PersistedState {
   currentSlideIndex: number;
@@ -188,7 +188,7 @@ export function AppShell() {
     return (
       <div className="h-screen w-screen bg-bg-base flex items-center justify-center">
         <div className="font-mono text-text-ghost text-sm animate-pulse">
-          Loading CORTEX...
+          Loading dTaborda...
         </div>
       </div>
     );

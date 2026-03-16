@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "CORTEX — De Chat a Sistema Cognitivo",
-  description: "Experiencia educativa interactiva sobre arquitectura moderna de desarrollo con IA y agentes.",
+  title: "dTaborda — Rompé el chat. Construí el sistema.",
+  description: "Experiencia educativa interactiva sobre arquitectura moderna de desarrollo con IA y agentes. Beyond the prompt.",
 };
 
 export default function RootLayout({

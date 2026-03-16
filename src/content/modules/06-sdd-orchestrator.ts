@@ -8,7 +8,7 @@ export const sddOrchestratorModule: ModuleDefinition = {
   description:
     "Specs como fuente de verdad. Orquestador como coordinador. Sub-agentes como ejecutores. Verificación contra contrato.",
   icon: "git-branch",
-  accentColor: "#D4AF37",
+  accentColor: "#00F0FF",
   slides: [
     {
       id: "sdd-hero",
@@ -42,7 +42,7 @@ export const sddOrchestratorModule: ModuleDefinition = {
           {
             name: "Orchestrator",
             description: "Coordina. No ejecuta. Mantiene estado global.",
-            color: "#D4AF37",
+            color: "#00F0FF",
           },
           {
             name: "Spec Writer",

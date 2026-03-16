@@ -25,7 +25,7 @@ export function EcosystemMapVisual({ data, accent }: Props) {
   };
   const satellites = (data.satellites as SatelliteDef[]) || [
     { label: "Engram", color: "#EC4899", description: "Memoria persistente" },
-    { label: "SDD", color: "#D4AF37", description: "Spec-driven dev" },
+    { label: "SDD", color: "#00F0FF", description: "Spec-driven dev" },
     { label: "Skills", color: "#84CC16", description: "Conocimiento on-demand" },
     { label: "MCP", color: "#3B82F6", description: "Integración externa" },
     { label: "AGENTS.md", color: "#F97316", description: "Instrucciones base" },

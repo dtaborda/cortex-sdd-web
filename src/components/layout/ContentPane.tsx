@@ -100,11 +100,11 @@ export function ContentPane({
             <div
               className="rounded-lg px-5 py-4 mb-6 max-w-lg border-l-2"
               style={{
-                borderLeftColor: "#D4AF37",
-                backgroundColor: "rgba(212, 175, 55, 0.08)",
+                borderLeftColor: "#00F0FF",
+                backgroundColor: "rgba(0, 240, 255, 0.08)",
               }}
             >
-              <p className="text-sm font-medium text-accent-gold leading-relaxed">
+              <p className="text-sm font-medium text-accent-cyan leading-relaxed">
                 {slide.keyMessage}
               </p>
             </div>

@@ -150,10 +150,7 @@ export function Sidebar({
           {/* Bottom — version & author */}
           <div className="px-4 py-3 border-t border-border-subtle">
             <p className="text-[10px] font-mono text-text-ghost leading-relaxed">
-              CORTEX v1.0
-            </p>
-            <p className="text-[10px] font-mono text-text-ghost">
-              by Damian Taborda
+              dTaborda · v1.0
             </p>
           </div>
         </motion.aside>
