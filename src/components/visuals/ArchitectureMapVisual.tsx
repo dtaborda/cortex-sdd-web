@@ -89,12 +89,12 @@ export function ArchitectureMapVisual({ data, accent, locale }: Props) {
   });
 
   return (
-    <div className="w-full max-w-2xl">
+    <div className="w-full max-w-2xl overflow-x-hidden">
       <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
         {isEn ? "Architecture" : "Arquitectura"}
       </p>
 
-      <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} className="w-full">
+      <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} className="w-full h-auto" preserveAspectRatio="xMidYMid meet">
         <defs>
           <marker
             id="arch-arrow"

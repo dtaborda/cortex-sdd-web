@@ -36,7 +36,7 @@ export function RoleSpecializationVisual({ data, locale }: Props) {
         {isEn ? "Specialized roles" : "Roles especializados"}
       </p>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         {roles.map((role, i) => (
           <motion.div
             key={role.name}
@@ -57,7 +57,7 @@ export function RoleSpecializationVisual({ data, locale }: Props) {
               style={{ backgroundColor: role.color }}
             />
 
-            <div className={`p-5 ${i === 0 ? "flex items-center gap-4" : ""}`}>
+            <div className={`p-4 sm:p-5 ${i === 0 ? "flex items-center gap-3 sm:gap-4" : ""}`}>
               {/* Role indicator */}
               <div
                 className="w-10 h-10 rounded-md flex items-center justify-center shrink-0 mb-2"

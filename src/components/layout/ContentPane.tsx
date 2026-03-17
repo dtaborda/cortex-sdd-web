@@ -42,7 +42,7 @@ export function ContentPane({
   const accent = module.accentColor;
 
   return (
-    <div className="lg:h-full flex flex-col overflow-hidden">
+    <div className="lg:h-full flex flex-col lg:overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={slide.id}

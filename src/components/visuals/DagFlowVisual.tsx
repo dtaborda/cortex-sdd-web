@@ -65,15 +65,15 @@ export function DagFlowVisual({ data, accent, locale }: Props) {
   const nodeH = 38;
 
   return (
-    <div className="w-full max-w-3xl">
+    <div className="w-full max-w-3xl overflow-x-hidden">
       <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
         Directed Acyclic Graph
       </p>
 
       <svg
         viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-        className="w-full"
-        style={{ maxHeight: 300 }}
+        className="w-full h-auto"
+        preserveAspectRatio="xMidYMid meet"
       >
         <defs>
           <marker

@@ -75,7 +75,7 @@ export function NeuralPredictionVisual({ data, accent, locale }: Props) {
   const lastLayerCenterX = layerZoneX + layerZoneWidth / 2;
 
   return (
-    <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
+    <div className="w-full h-full flex items-center justify-center relative overflow-x-hidden overflow-y-hidden">
       {/* Ambient glow behind the pipeline */}
       <motion.div
         className="absolute rounded-full blur-[100px]"
@@ -94,8 +94,8 @@ export function NeuralPredictionVisual({ data, accent, locale }: Props) {
 
       <svg
         viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-        className="w-full"
-        style={{ maxHeight: "90vh" }}
+        className="w-full h-auto"
+        preserveAspectRatio="xMidYMid meet"
       >
         <defs>
           {/* Glow filter for accent elements */}

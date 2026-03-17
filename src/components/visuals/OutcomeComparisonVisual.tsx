@@ -57,13 +57,13 @@ export function OutcomeComparisonVisual({ data, locale }: Props) {
 
   return (
     <div className="w-full max-w-2xl">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* Without panel */}
         <motion.div
           initial={{ opacity: 0, x: -24 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-lg bg-red-500/5 border border-red-500/15 p-5"
+          className="rounded-lg bg-red-500/5 border border-red-500/15 p-4 sm:p-5"
         >
           <div className="flex items-center gap-2 mb-4">
             <svg className="w-4 h-4 text-red-400" viewBox="0 0 16 16" fill="none">
@@ -103,7 +103,7 @@ export function OutcomeComparisonVisual({ data, locale }: Props) {
                     strokeLinecap="round"
                   />
                 </svg>
-                <span className="text-base text-text-secondary leading-snug">
+                <span className="text-sm sm:text-base text-text-secondary leading-snug">
                   {item}
                 </span>
               </motion.div>
@@ -116,7 +116,7 @@ export function OutcomeComparisonVisual({ data, locale }: Props) {
           initial={{ opacity: 0, x: 24 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-lg bg-emerald-500/5 border border-emerald-500/15 p-5"
+          className="rounded-lg bg-emerald-500/5 border border-emerald-500/15 p-4 sm:p-5"
         >
           <div className="flex items-center gap-2 mb-4">
             <svg
@@ -162,7 +162,7 @@ export function OutcomeComparisonVisual({ data, locale }: Props) {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-base text-text-primary leading-snug">
+                <span className="text-sm sm:text-base text-text-primary leading-snug">
                   {item}
                 </span>
               </motion.div>

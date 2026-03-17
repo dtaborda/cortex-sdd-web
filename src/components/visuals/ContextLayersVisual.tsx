@@ -81,13 +81,13 @@ export function ContextLayersVisual({ data, locale }: Props) {
                 className="w-3 h-3 rounded-sm shrink-0"
                 style={{ backgroundColor: layer.color }}
               />
-              <span className="text-base text-text-primary flex-1">
+              <span className="text-sm sm:text-base text-text-primary flex-1 truncate">
                 {layer.label}
               </span>
-              <span className="text-sm font-mono text-text-muted">
+              <span className="text-xs sm:text-sm font-mono text-text-muted shrink-0">
                 ~{pct}%
               </span>
-              <div className="w-24 h-2 bg-bg-elevated rounded-full overflow-hidden">
+              <div className="w-16 sm:w-24 h-2 bg-bg-elevated rounded-full overflow-hidden shrink-0">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${pct}%` }}

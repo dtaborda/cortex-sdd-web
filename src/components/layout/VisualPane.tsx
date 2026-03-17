@@ -14,7 +14,7 @@ export function VisualPane({ slide, module, locale }: VisualPaneProps) {
   const accent = module.accentColor;
 
   return (
-    <div className="relative h-full rounded-xl lg:rounded-2xl border border-border-subtle bg-bg-surface overflow-hidden">
+    <div className="relative min-h-[300px] sm:min-h-[400px] lg:min-h-0 lg:h-full rounded-xl lg:rounded-2xl border border-border-subtle bg-bg-surface overflow-hidden">
       {/* Grid background */}
       <div className="absolute inset-0 bg-grid opacity-40" />
 

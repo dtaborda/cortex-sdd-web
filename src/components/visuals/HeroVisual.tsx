@@ -16,7 +16,7 @@ export function HeroVisual({ data, accent, locale }: Props) {
   const displayNumber = moduleNumber !== null ? String(moduleNumber).padStart(2, "0") : "";
 
   return (
-    <div className="w-full max-w-2xl flex flex-col items-center justify-center relative">
+    <div className="w-full max-w-2xl flex flex-col items-center justify-center relative overflow-hidden">
       {/* Background geometric decorations */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center"
@@ -46,14 +46,14 @@ export function HeroVisual({ data, accent, locale }: Props) {
 
         {/* Subtle cross lines */}
         <motion.div
-          className="absolute w-px h-64"
+          className="absolute w-px h-48 sm:h-64"
           style={{ backgroundColor: `${accent}10` }}
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         />
         <motion.div
-          className="absolute h-px w-64"
+          className="absolute h-px w-48 sm:w-64"
           style={{ backgroundColor: `${accent}10` }}
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
@@ -79,7 +79,7 @@ export function HeroVisual({ data, accent, locale }: Props) {
           />
 
           <span
-            className="text-[120px] leading-none font-mono font-bold tracking-tighter relative"
+            className="text-[72px] sm:text-[120px] leading-none font-mono font-bold tracking-tighter relative"
             style={{
               color: accent,
               opacity: 0.15,
@@ -112,7 +112,7 @@ export function HeroVisual({ data, accent, locale }: Props) {
           className="relative z-10"
         >
           {/* Abstract logo / icon */}
-          <svg width="160" height="160" viewBox="0 0 120 120" fill="none">
+          <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-40 sm:h-40" fill="none">
             <motion.circle
               cx="60"
               cy="60"

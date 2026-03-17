@@ -42,15 +42,15 @@ export function DegradationFlowVisual({ data, accent, locale }: Props) {
         {isEn ? "Context degradation" : "Degradación de contexto"}
       </p>
 
-      <div className="flex items-start gap-1">
+      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-1">
         {stages.map((stage, i) => (
-          <div key={i} className="flex items-center">
+          <div key={i} className="flex flex-col sm:flex-row items-center">
             {/* Stage card */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col items-center w-[140px]"
+              className="flex flex-col items-center w-full sm:w-[140px]"
             >
               {/* Quality bar container */}
               <div className="w-full h-28 bg-bg-elevated rounded-lg border border-border-subtle p-3 flex flex-col justify-end relative overflow-hidden">
@@ -91,11 +91,23 @@ export function DegradationFlowVisual({ data, accent, locale }: Props) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 + i * 0.2 }}
-                className="flex items-center mx-0.5 mt-[-20px]"
+                className="flex items-center mx-0.5 sm:mt-[-20px]"
               >
-                <svg width="20" height="14" viewBox="0 0 16 12" fill="none">
+                {/* Horizontal arrow for desktop */}
+                <svg width="20" height="14" viewBox="0 0 16 12" fill="none" className="hidden sm:block">
                   <path
                     d="M0 6H12M12 6L8 2M12 6L8 10"
+                    stroke={accent}
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    opacity="0.5"
+                  />
+                </svg>
+                {/* Vertical arrow for mobile */}
+                <svg width="14" height="20" viewBox="0 0 12 16" fill="none" className="block sm:hidden">
+                  <path
+                    d="M6 0V12M6 12L2 8M6 12L10 8"
                     stroke={accent}
                     strokeWidth="1.5"
                     strokeLinecap="round"

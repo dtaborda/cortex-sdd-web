@@ -68,7 +68,7 @@ export function ModelRouterVisual({ data, accent, locale }: Props) {
                 duration: 0.5,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="flex items-center gap-4 p-4 rounded-lg bg-bg-surface border border-border-subtle"
+              className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg bg-bg-surface border border-border-subtle"
             >
               {/* Tier indicator */}
               <div
@@ -91,7 +91,7 @@ export function ModelRouterVisual({ data, accent, locale }: Props) {
                     {model.tier}
                   </span>
                 </div>
-                <p className="text-sm text-text-secondary truncate">
+                <p className="text-xs sm:text-sm text-text-secondary truncate">
                   {model.bestFor}
                 </p>
               </div>

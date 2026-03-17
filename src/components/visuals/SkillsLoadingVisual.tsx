@@ -50,7 +50,7 @@ export function SkillsLoadingVisual({ data, accent, locale }: Props) {
       </p>
 
       {/* Skills grid */}
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-2 sm:gap-3">
         {available.map((skill, i) => {
           const isLoaded = loadedSet.has(skill);
 
@@ -67,7 +67,7 @@ export function SkillsLoadingVisual({ data, accent, locale }: Props) {
                 duration: 0.4,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="flex items-center gap-2 px-3 py-2 rounded-md border text-sm font-mono"
+              className="flex items-center gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-md border text-xs sm:text-sm font-mono"
               style={{
                 backgroundColor: isLoaded ? `${accent}12` : "#18181B",
                 borderColor: isLoaded ? `${accent}40` : "#27272A",

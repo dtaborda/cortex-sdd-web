@@ -66,7 +66,7 @@ export function TimelineVisual({ data, accent, locale }: Props) {
                   duration: 0.5,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="flex items-start gap-4 relative"
+                className="flex items-start gap-3 sm:gap-4 relative"
               >
                 {/* Dot on the line */}
                 <motion.div
@@ -91,9 +91,9 @@ export function TimelineVisual({ data, accent, locale }: Props) {
                 </motion.div>
 
                 {/* Content */}
-                <div className="flex-1 pb-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-base font-semibold text-text-primary">
+                <div className="flex-1 pb-1 min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-sm sm:text-base font-semibold text-text-primary break-words">
                       {label}
                     </span>
                     {duration && (

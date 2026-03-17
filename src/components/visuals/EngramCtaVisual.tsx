@@ -48,7 +48,7 @@ export function EngramCtaVisual({ data, accent, locale }: Props) {
   const githubY = 430;
 
   return (
-    <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
+    <div className="w-full h-full flex items-center justify-center relative overflow-x-hidden overflow-y-hidden">
       {/* Ambient glow */}
       <motion.div
         className="absolute rounded-full blur-[140px]"
@@ -67,8 +67,8 @@ export function EngramCtaVisual({ data, accent, locale }: Props) {
 
       <svg
         viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-        className="w-full"
-        style={{ maxHeight: "92vh" }}
+        className="w-full h-auto"
+        preserveAspectRatio="xMidYMid meet"
       >
         <defs>
           {/* Glow filter */}

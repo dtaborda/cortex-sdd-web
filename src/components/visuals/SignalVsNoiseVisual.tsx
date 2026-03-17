@@ -36,7 +36,7 @@ export function SignalVsNoiseVisual({ data, locale }: Props) {
 
   return (
     <div className="w-full max-w-2xl">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* Signal column */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -70,7 +70,7 @@ export function SignalVsNoiseVisual({ data, locale }: Props) {
               >
                 <circle cx="8" cy="8" r="3" fill="currentColor" />
               </svg>
-              <span className="text-base text-text-primary leading-snug">
+              <span className="text-sm sm:text-base text-text-primary leading-snug">
                 {item}
               </span>
             </motion.div>
@@ -113,7 +113,7 @@ export function SignalVsNoiseVisual({ data, locale }: Props) {
               >
                 <circle cx="8" cy="8" r="3" fill="currentColor" />
               </svg>
-              <span className="text-base text-text-primary leading-snug">
+              <span className="text-sm sm:text-base text-text-primary leading-snug">
                 {item}
               </span>
             </motion.div>

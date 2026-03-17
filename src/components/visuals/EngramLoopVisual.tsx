@@ -49,12 +49,12 @@ export function EngramLoopVisual({ data, accent, locale }: Props) {
   });
 
   return (
-    <div className="w-full max-w-2xl">
+    <div className="w-full max-w-2xl overflow-x-hidden">
       <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
         {isEn ? "Persistent memory cycle" : "Ciclo de memoria persistente"}
       </p>
 
-      <svg viewBox="0 0 520 360" className="w-full" style={{ maxHeight: 400 }}>
+      <svg viewBox="0 0 520 360" className="w-full h-auto" preserveAspectRatio="xMidYMid meet">
         <defs>
           <marker
             id="loop-arrow"

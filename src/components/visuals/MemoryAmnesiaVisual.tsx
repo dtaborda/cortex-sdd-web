@@ -54,7 +54,7 @@ export function MemoryAmnesiaVisual({ data, accent, locale }: Props) {
   const dimColor = "#555577";
 
   return (
-    <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
+    <div className="w-full h-full flex items-center justify-center relative overflow-x-hidden overflow-y-hidden">
       {/* Ambient glow — Session 1 (warm/success) */}
       <motion.div
         className="absolute rounded-full blur-[120px]"
@@ -89,8 +89,8 @@ export function MemoryAmnesiaVisual({ data, accent, locale }: Props) {
 
       <svg
         viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-        className="w-full"
-        style={{ maxHeight: "92vh" }}
+        className="w-full h-auto"
+        preserveAspectRatio="xMidYMid meet"
       >
         <defs>
           {/* Glow filter — accent */}

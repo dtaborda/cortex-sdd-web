@@ -144,7 +144,7 @@ export function SddSpecVisual({ data, accent, locale }: Props) {
   const chaosGap = 70;
 
   return (
-    <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
+    <div className="w-full h-full flex items-center justify-center relative overflow-x-hidden overflow-y-hidden">
       {/* Ambient glow — dual tone */}
       <motion.div
         className="absolute rounded-full blur-[120px]"
@@ -177,8 +177,8 @@ export function SddSpecVisual({ data, accent, locale }: Props) {
 
       <svg
         viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-        className="w-full"
-        style={{ maxHeight: "92vh" }}
+        className="w-full h-auto"
+        preserveAspectRatio="xMidYMid meet"
       >
         <defs>
           {/* Glow filter — accent */}

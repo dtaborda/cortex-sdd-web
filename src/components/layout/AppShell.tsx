@@ -278,20 +278,22 @@ export function AppShell() {
       <main
         className={cn(
           "pt-[60px] transition-all duration-300",
-          // Desktop: fixed height with sidebar offset
-          "lg:h-screen",
+          // Mobile: scrollable, natural flow
+          "min-h-[calc(100vh-60px)] overflow-y-auto",
+          // Desktop: fixed height split panel, no scroll
+          "lg:h-screen lg:overflow-hidden",
           // Desktop sidebar offset (only when not in focus mode)
           !isFocusMode && "lg:pl-[260px]",
           // Mobile: add bottom padding for fixed nav bar
-          "pb-[64px] lg:pb-0"
+          "pb-[72px] lg:pb-0"
         )}
       >
         <div
           className={cn(
             // Desktop: side-by-side split panels, full height
             "lg:h-full lg:grid lg:grid-cols-[38%_62%] lg:gap-0",
-            // Mobile/Tablet: stacked vertically, scrollable
-            "flex flex-col lg:flex-row"
+            // Mobile/Tablet: stacked vertically
+            "flex flex-col"
           )}
         >
           <ContentPane

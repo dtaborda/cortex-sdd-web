@@ -27,7 +27,7 @@ export function TokenPredictionVisual({ data, accent, locale }: Props) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.15 }}
-            className="px-4 py-2 rounded-md bg-bg-elevated border border-border-default font-mono text-base text-text-primary"
+            className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-md bg-bg-elevated border border-border-default font-mono text-sm sm:text-base text-text-primary"
           >
             {token}
           </motion.span>
@@ -36,7 +36,7 @@ export function TokenPredictionVisual({ data, accent, locale }: Props) {
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="px-4 py-2 rounded-md border border-dashed font-mono text-base"
+          className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-md border border-dashed font-mono text-sm sm:text-base"
           style={{ borderColor: accent, color: accent }}
         >
           ???
@@ -56,9 +56,9 @@ export function TokenPredictionVisual({ data, accent, locale }: Props) {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5 + i * 0.1 }}
-              className="flex items-center gap-4"
+              className="flex items-center gap-2 sm:gap-4"
             >
-              <span className="w-24 text-right text-base font-mono text-text-secondary">
+              <span className="w-16 sm:w-24 text-right text-sm sm:text-base font-mono text-text-secondary truncate">
                 {pred.label}
               </span>
               <div className="flex-1 h-9 bg-bg-elevated rounded-md overflow-hidden relative">

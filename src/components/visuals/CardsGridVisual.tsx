@@ -53,13 +53,10 @@ export function CardsGridVisual({ data, accent, locale }: Props) {
         },
       ]);
 
-  const cols = cards.length <= 4 ? 2 : 3;
-
   return (
     <div className="w-full max-w-2xl">
       <div
-        className="grid gap-4"
-        style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
+        className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
       >
         {cards.map((card, i) => (
           <motion.div
@@ -71,7 +68,7 @@ export function CardsGridVisual({ data, accent, locale }: Props) {
               duration: 0.5,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="rounded-lg bg-bg-surface border border-border-subtle p-5 group hover:border-border-default transition-colors"
+            className="rounded-lg bg-bg-surface border border-border-subtle p-4 sm:p-5 group hover:border-border-default transition-colors"
           >
             {/* Step number */}
             <span
