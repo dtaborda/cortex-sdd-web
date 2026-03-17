@@ -72,7 +72,21 @@ html {
 body {
   background-color: var(--color-bg-base);
   min-height: 100vh;
-  overflow: hidden;
+}
+
+/* Desktop: keep overflow hidden for split-panel layout */
+@media (min-width: 1024px) {
+  body {
+    overflow: hidden;
+  }
+}
+
+/* Mobile/Tablet: allow vertical scrolling */
+@media (max-width: 1023px) {
+  body {
+    overflow: auto;
+    overflow-x: hidden;
+  }
 }
 
 /* Scrollbar styling */
@@ -128,6 +142,18 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 0;
+}
+
+/* Safe area padding for mobile bottom nav (notch devices) */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Ensure mobile viewport accounts for bottom nav */
+@media (max-width: 1023px) {
+  .mobile-bottom-pad {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 /* Reduced motion */

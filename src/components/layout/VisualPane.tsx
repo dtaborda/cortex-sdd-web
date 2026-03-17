@@ -14,7 +14,7 @@ export function VisualPane({ slide, module, locale }: VisualPaneProps) {
   const accent = module.accentColor;
 
   return (
-    <div className="relative h-full rounded-2xl border border-border-subtle bg-bg-surface overflow-hidden">
+    <div className="relative h-full rounded-xl lg:rounded-2xl border border-border-subtle bg-bg-surface overflow-hidden">
       {/* Grid background */}
       <div className="absolute inset-0 bg-grid opacity-40" />
 
@@ -25,7 +25,7 @@ export function VisualPane({ slide, module, locale }: VisualPaneProps) {
       />
 
       {/* Visual content */}
-      <div className="relative z-10 h-full flex items-center justify-center p-3">
+      <div className="relative z-10 h-full flex items-center justify-center p-2 md:p-3">
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.id}

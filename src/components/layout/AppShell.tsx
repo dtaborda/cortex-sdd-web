@@ -8,6 +8,8 @@ import { ProgressBar } from "./ProgressBar";
 import { Sidebar } from "./Sidebar";
 import { ContentPane } from "./ContentPane";
 import { VisualPane } from "./VisualPane";
+import { MobileBottomNav } from "./MobileBottomNav";
+import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "dtaborda-state";
 
@@ -55,6 +57,7 @@ export function AppShell() {
   const [completedSlideIds, setCompletedSlideIds] = useState<string[]>([]);
   const [isFocusMode, setIsFocusMode] = useState(false);
   const [isHydrated, setIsHydrated] = useState(false);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   // Hydrate from localStorage on mount
   useEffect(() => {
@@ -85,6 +88,29 @@ export function AppShell() {
     if (!isHydrated) return;
     savePersistedState({ currentSlideIndex, completedSlideIds });
   }, [currentSlideIndex, completedSlideIds, isHydrated]);
+
+  // Close mobile sidebar on window resize to desktop
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth >= 1024) {
+        setIsMobileSidebarOpen(false);
+      }
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Prevent body scroll when mobile sidebar is open
+  useEffect(() => {
+    if (isMobileSidebarOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileSidebarOpen]);
 
   // Derive current flat slide
   const currentFlatSlide = flatSlides[currentSlideIndex];
@@ -171,6 +197,14 @@ export function AppShell() {
     [flatSlides]
   );
 
+  const toggleMobileSidebar = useCallback(() => {
+    setIsMobileSidebarOpen((open) => !open);
+  }, []);
+
+  const closeMobileSidebar = useCallback(() => {
+    setIsMobileSidebarOpen(false);
+  }, []);
+
   // Keyboard navigation
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -195,14 +229,18 @@ export function AppShell() {
           break;
         case "Escape":
           e.preventDefault();
-          setIsFocusMode(false);
+          if (isMobileSidebarOpen) {
+            setIsMobileSidebarOpen(false);
+          } else {
+            setIsFocusMode(false);
+          }
           break;
       }
     }
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [goNext, goPrev, toggleFocus]);
+  }, [goNext, goPrev, toggleFocus, isMobileSidebarOpen]);
 
   // Don't render until hydrated to avoid layout shift
   if (!isHydrated || !currentModule || !currentSlide) {
@@ -218,11 +256,12 @@ export function AppShell() {
   const accentColor = currentModule.accentColor;
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-bg-base">
+    <div className="min-h-screen w-screen bg-bg-base lg:h-screen lg:overflow-hidden">
       <Header
         currentModule={currentModule}
         isFocusMode={isFocusMode}
         onToggleFocus={toggleFocus}
+        onToggleMobileSidebar={toggleMobileSidebar}
       />
       <ProgressBar progress={globalProgress} accentColor={accentColor} />
       <Sidebar
@@ -231,12 +270,30 @@ export function AppShell() {
         completedModuleIds={completedModuleIds}
         onModuleClick={goToModule}
         isFocusMode={isFocusMode}
+        isMobileOpen={isMobileSidebarOpen}
+        onMobileClose={closeMobileSidebar}
       />
+
+      {/* Main content area */}
       <main
-        style={{ paddingLeft: isFocusMode ? 0 : 260 }}
-        className="pt-[60px] h-screen transition-all duration-300"
+        className={cn(
+          "pt-[60px] transition-all duration-300",
+          // Desktop: fixed height with sidebar offset
+          "lg:h-screen",
+          // Desktop sidebar offset (only when not in focus mode)
+          !isFocusMode && "lg:pl-[260px]",
+          // Mobile: add bottom padding for fixed nav bar
+          "pb-[64px] lg:pb-0"
+        )}
       >
-        <div className="h-full grid grid-cols-1 lg:grid-cols-[38%_62%] gap-0">
+        <div
+          className={cn(
+            // Desktop: side-by-side split panels, full height
+            "lg:h-full lg:grid lg:grid-cols-[38%_62%] lg:gap-0",
+            // Mobile/Tablet: stacked vertically, scrollable
+            "flex flex-col lg:flex-row"
+          )}
+        >
           <ContentPane
             slide={currentSlide}
             module={currentModule}
@@ -247,11 +304,23 @@ export function AppShell() {
             canGoPrev={canGoPrev}
             canGoNext={canGoNext}
           />
-          <div className="p-2 lg:p-3">
+          <div className="p-2 lg:p-3 min-h-[50vh] lg:min-h-0">
             <VisualPane slide={currentSlide} module={currentModule} locale={locale} />
           </div>
         </div>
       </main>
+
+      {/* Mobile bottom navigation */}
+      <MobileBottomNav
+        moduleName={currentModule.shortTitle}
+        slideIndex={moduleSlideIndex}
+        totalSlides={currentModule.slides.length}
+        onPrev={goPrev}
+        onNext={goNext}
+        canGoPrev={canGoPrev}
+        canGoNext={canGoNext}
+        accentColor={accentColor}
+      />
     </div>
   );
 }
