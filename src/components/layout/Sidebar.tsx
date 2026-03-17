@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { ModuleDefinition } from "@/types/content";
+import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 const ICON_MAP: Record<string, LucideIcon> = {
@@ -46,6 +47,8 @@ export function Sidebar({
   onModuleClick,
   isFocusMode,
 }: SidebarProps) {
+  const { t } = useI18n();
+
   return (
     <AnimatePresence>
       {!isFocusMode && (
@@ -150,7 +153,7 @@ export function Sidebar({
           {/* Bottom — version & author */}
           <div className="px-4 py-3 border-t border-border-subtle">
             <p className="text-[10px] font-mono text-text-ghost leading-relaxed">
-              dTaborda · v1.0
+              {t("sidebar.version")}
             </p>
           </div>
         </motion.aside>

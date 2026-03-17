@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { I18nProvider } from "@/lib/i18n";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "dTaborda — Rompé el chat. Construí el sistema.",
+  title: "dTaborda \u2014 Romp\u00e9 el chat. Constru\u00ed el sistema.",
   description: "Experiencia educativa interactiva sobre arquitectura moderna de desarrollo con IA y agentes. Beyond the prompt.",
 };
 
@@ -19,7 +20,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
       </head>
       <body className="bg-bg-base text-text-primary antialiased">
-        {children}
+        <I18nProvider>{children}</I18nProvider>
       </body>
     </html>
   );

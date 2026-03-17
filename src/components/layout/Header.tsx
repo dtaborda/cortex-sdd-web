@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Eye, EyeOff } from "lucide-react";
 import type { ModuleDefinition } from "@/types/content";
+import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 interface HeaderProps {
@@ -16,6 +17,8 @@ export function Header({
   isFocusMode,
   onToggleFocus,
 }: HeaderProps) {
+  const { locale, setLocale, t } = useI18n();
+
   return (
     <header
       className={cn(
@@ -32,7 +35,7 @@ export function Header({
           <span className="text-text-primary">Taborda</span>
         </span>
         <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-text-muted leading-none">
-          Beyond the prompt.
+          {t("header.tagline")}
         </span>
       </div>
 
@@ -60,8 +63,36 @@ export function Header({
         </AnimatePresence>
       </div>
 
-      {/* Right — Focus toggle + keyboard hints */}
+      {/* Right — Locale flags + Focus toggle + keyboard hints */}
       <div className="flex items-center gap-3 min-w-[180px] justify-end">
+        {/* Language selector */}
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => setLocale("es")}
+            className={cn(
+              "text-lg px-1.5 py-0.5 rounded transition-all duration-150",
+              locale === "es"
+                ? "opacity-100 scale-110 bg-bg-elevated"
+                : "opacity-40 hover:opacity-70"
+            )}
+            title="Espa\u00f1ol (Argentina)"
+          >
+            \ud83c\udde6\ud83c\uddf7
+          </button>
+          <button
+            onClick={() => setLocale("en")}
+            className={cn(
+              "text-lg px-1.5 py-0.5 rounded transition-all duration-150",
+              locale === "en"
+                ? "opacity-100 scale-110 bg-bg-elevated"
+                : "opacity-40 hover:opacity-70"
+            )}
+            title="English (US)"
+          >
+            \ud83c\uddfa\ud83c\uddf8
+          </button>
+        </div>
+
         <div className="hidden md:flex items-center gap-1.5 text-text-ghost">
           <kbd className="inline-flex items-center justify-center h-5 min-w-[20px] px-1 rounded border border-border-default bg-bg-elevated text-[10px] font-mono">
             &larr;
@@ -88,7 +119,7 @@ export function Header({
             <Eye className="size-3.5" />
           )}
           <span className="hidden sm:inline">
-            {isFocusMode ? "Exit" : "Focus"}
+            {isFocusMode ? t("nav.exit") : t("nav.focus")}
           </span>
         </button>
       </div>

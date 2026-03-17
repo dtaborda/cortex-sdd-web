@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { allModules, allFlatSlides, totalSlideCount } from "@/lib/content";
+import { getAllModules, buildFlatSlides } from "@/lib/content";
+import { useI18n } from "@/lib/i18n";
 import { Header } from "./Header";
 import { ProgressBar } from "./ProgressBar";
 import { Sidebar } from "./Sidebar";
@@ -43,6 +44,13 @@ function savePersistedState(state: PersistedState): void {
 }
 
 export function AppShell() {
+  const { locale, t } = useI18n();
+
+  // Derive modules and flat slides reactively based on locale
+  const modules = useMemo(() => getAllModules(locale), [locale]);
+  const flatSlides = useMemo(() => buildFlatSlides(modules), [modules]);
+  const totalSlides = flatSlides.length;
+
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [completedSlideIds, setCompletedSlideIds] = useState<string[]>([]);
   const [isFocusMode, setIsFocusMode] = useState(false);
@@ -54,13 +62,23 @@ export function AppShell() {
     if (persisted) {
       const safeIndex = Math.min(
         persisted.currentSlideIndex,
-        totalSlideCount - 1
+        totalSlides - 1
       );
       setCurrentSlideIndex(Math.max(0, safeIndex));
       setCompletedSlideIds(persisted.completedSlideIds);
     }
     setIsHydrated(true);
+    // Only run on mount — totalSlides from initial render is fine
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Clamp index when locale changes (slide count might differ)
+  useEffect(() => {
+    if (!isHydrated) return;
+    setCurrentSlideIndex((prev) =>
+      Math.min(prev, totalSlides - 1)
+    );
+  }, [totalSlides, isHydrated]);
 
   // Persist state on changes (only after hydration)
   useEffect(() => {
@@ -69,15 +87,15 @@ export function AppShell() {
   }, [currentSlideIndex, completedSlideIds, isHydrated]);
 
   // Derive current flat slide
-  const currentFlatSlide = allFlatSlides[currentSlideIndex];
+  const currentFlatSlide = flatSlides[currentSlideIndex];
 
   // Derive current module
   const currentModule = useMemo(
     () =>
       currentFlatSlide
-        ? allModules.find((m) => m.id === currentFlatSlide.moduleId)
+        ? modules.find((m) => m.id === currentFlatSlide.moduleId)
         : undefined,
-    [currentFlatSlide]
+    [currentFlatSlide, modules]
   );
 
   // Derive current slide definition
@@ -101,21 +119,21 @@ export function AppShell() {
   // Derive global progress (percentage)
   const globalProgress = useMemo(
     () =>
-      totalSlideCount > 0
-        ? ((currentSlideIndex + 1) / totalSlideCount) * 100
+      totalSlides > 0
+        ? ((currentSlideIndex + 1) / totalSlides) * 100
         : 0,
-    [currentSlideIndex]
+    [currentSlideIndex, totalSlides]
   );
 
   // Derive completed module IDs
   const completedModuleIds = useMemo(
     () =>
-      allModules
+      modules
         .filter((mod) =>
           mod.slides.every((s) => completedSlideIds.includes(s.id))
         )
         .map((mod) => mod.id),
-    [completedSlideIds]
+    [completedSlideIds, modules]
   );
 
   // Mark current slide as completed when viewed
@@ -129,7 +147,7 @@ export function AppShell() {
 
   // Navigation handlers
   const canGoPrev = currentSlideIndex > 0;
-  const canGoNext = currentSlideIndex < totalSlideCount - 1;
+  const canGoNext = currentSlideIndex < totalSlides - 1;
 
   const goNext = useCallback(() => {
     if (canGoNext) setCurrentSlideIndex((i) => i + 1);
@@ -143,12 +161,15 @@ export function AppShell() {
     setIsFocusMode((f) => !f);
   }, []);
 
-  const goToModule = useCallback((moduleId: string) => {
-    const firstSlide = allFlatSlides.find((s) => s.moduleId === moduleId);
-    if (firstSlide) {
-      setCurrentSlideIndex(firstSlide.globalIndex);
-    }
-  }, []);
+  const goToModule = useCallback(
+    (moduleId: string) => {
+      const firstSlide = flatSlides.find((s) => s.moduleId === moduleId);
+      if (firstSlide) {
+        setCurrentSlideIndex(firstSlide.globalIndex);
+      }
+    },
+    [flatSlides]
+  );
 
   // Keyboard navigation
   useEffect(() => {
@@ -188,7 +209,7 @@ export function AppShell() {
     return (
       <div className="h-screen w-screen bg-bg-base flex items-center justify-center">
         <div className="font-mono text-text-ghost text-sm animate-pulse">
-          Loading dTaborda...
+          {t("loading")}
         </div>
       </div>
     );
@@ -205,7 +226,7 @@ export function AppShell() {
       />
       <ProgressBar progress={globalProgress} accentColor={accentColor} />
       <Sidebar
-        modules={allModules}
+        modules={modules}
         activeModuleId={currentModule.id}
         completedModuleIds={completedModuleIds}
         onModuleClick={goToModule}

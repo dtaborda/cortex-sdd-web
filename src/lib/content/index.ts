@@ -1,5 +1,6 @@
 import type { ModuleDefinition, SlideDefinition } from "@/types/content";
 import type { FlatSlide } from "@/types/navigation";
+import type { Locale } from "@/lib/i18n";
 import { iaGenerativaModule } from "@/content/modules/01-ia-generativa";
 import { contextWindowModule } from "@/content/modules/02-context-window";
 import { chatVsAgenteModule } from "@/content/modules/03-chat-vs-agente";
@@ -10,11 +11,12 @@ import { engramModule } from "@/content/modules/07-engram";
 import { skillsRegistryModule } from "@/content/modules/08-skills-registry";
 import { stackBibliotecasModule } from "@/content/modules/09-stack-bibliotecas";
 import { cierreModule } from "@/content/modules/10-cierre";
+import { enModules } from "@/content/modules/en";
 
 /**
- * All modules in order. Add new modules here as they are created.
+ * Spanish modules (default).
  */
-export const allModules: ModuleDefinition[] = [
+const esModules: ModuleDefinition[] = [
   iaGenerativaModule,
   contextWindowModule,
   chatVsAgenteModule,
@@ -28,42 +30,56 @@ export const allModules: ModuleDefinition[] = [
 ].sort((a, b) => a.order - b.order);
 
 /**
- * Flat array of all slides across all modules, with global index.
+ * Get all modules for a given locale.
  */
-export const allFlatSlides: FlatSlide[] = allModules.flatMap((module, _moduleIdx) =>
-  module.slides.map((slide, slideIdx) => ({
-    id: slide.id,
-    moduleId: module.id,
-    moduleTitle: module.title,
-    moduleOrder: module.order,
-    order: slide.order,
-    title: slide.title,
-    globalIndex: 0, // will be set below
-  }))
-);
-
-// Set global indices
-allFlatSlides.forEach((slide, idx) => {
-  slide.globalIndex = idx;
-});
-
-/**
- * Total number of slides across all modules.
- */
-export const totalSlideCount = allFlatSlides.length;
-
-/**
- * Get a module by ID.
- */
-export function getModuleById(id: string): ModuleDefinition | undefined {
-  return allModules.find((m) => m.id === id);
+export function getAllModules(locale: Locale = "es"): ModuleDefinition[] {
+  return locale === "en" ? enModules : esModules;
 }
 
 /**
- * Get a slide by ID.
+ * Build flat slides from modules.
  */
-export function getSlideById(id: string): SlideDefinition | undefined {
-  for (const module of allModules) {
+export function buildFlatSlides(modules: ModuleDefinition[]): FlatSlide[] {
+  const flat: FlatSlide[] = modules.flatMap((module) =>
+    module.slides.map((slide) => ({
+      id: slide.id,
+      moduleId: module.id,
+      moduleTitle: module.title,
+      moduleOrder: module.order,
+      order: slide.order,
+      title: slide.title,
+      globalIndex: 0,
+    }))
+  );
+  flat.forEach((slide, idx) => {
+    slide.globalIndex = idx;
+  });
+  return flat;
+}
+
+// Backward-compatible exports (Spanish default)
+export const allModules = esModules;
+export const allFlatSlides = buildFlatSlides(esModules);
+export const totalSlideCount = allFlatSlides.length;
+
+/**
+ * Get a module by ID (from a given set of modules).
+ */
+export function getModuleById(
+  id: string,
+  modules: ModuleDefinition[] = esModules
+): ModuleDefinition | undefined {
+  return modules.find((m) => m.id === id);
+}
+
+/**
+ * Get a slide by ID (from a given set of modules).
+ */
+export function getSlideById(
+  id: string,
+  modules: ModuleDefinition[] = esModules
+): SlideDefinition | undefined {
+  for (const module of modules) {
     const slide = module.slides.find((s) => s.id === id);
     if (slide) return slide;
   }

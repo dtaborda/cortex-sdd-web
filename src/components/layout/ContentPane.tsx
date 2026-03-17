@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { SlideDefinition, ModuleDefinition } from "@/types/content";
+import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 interface ContentPaneProps {
@@ -37,6 +38,7 @@ export function ContentPane({
   canGoPrev,
   canGoNext,
 }: ContentPaneProps) {
+  const { t } = useI18n();
   const accent = module.accentColor;
 
   return (
@@ -135,7 +137,7 @@ export function ContentPane({
           )}
         >
           <ChevronLeft className="size-4" />
-          <span className="hidden sm:inline">Prev</span>
+          <span className="hidden sm:inline">{t("nav.prev")}</span>
         </button>
 
         <span className="text-xs font-mono text-text-ghost">
@@ -153,7 +155,7 @@ export function ContentPane({
               : "text-text-ghost cursor-not-allowed"
           )}
         >
-          <span className="hidden sm:inline">Next</span>
+          <span className="hidden sm:inline">{t("nav.next")}</span>
           <ChevronRight className="size-4" />
         </button>
       </div>
