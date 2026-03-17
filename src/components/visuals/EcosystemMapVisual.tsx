@@ -31,11 +31,11 @@ export function EcosystemMapVisual({ data, accent }: Props) {
     { label: "AGENTS.md", color: "#F97316", description: "Instrucciones base" },
   ];
 
-  const svgWidth = 420;
-  const svgHeight = 320;
+  const svgWidth = 540;
+  const svgHeight = 400;
   const cx = svgWidth / 2;
   const cy = svgHeight / 2;
-  const radius = 110;
+  const radius = 140;
   const count = satellites.length;
 
   const positions = satellites.map((_, i) => {
@@ -47,8 +47,8 @@ export function EcosystemMapVisual({ data, accent }: Props) {
   });
 
   return (
-    <div className="w-full max-w-md">
-      <p className="text-xs font-mono text-text-muted uppercase tracking-wider mb-4">
+    <div className="w-full max-w-2xl">
+      <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
         Ecosistema
       </p>
 
@@ -83,7 +83,7 @@ export function EcosystemMapVisual({ data, accent }: Props) {
         <motion.circle
           cx={cx}
           cy={cy}
-          r="42"
+          r="52"
           fill={center.color}
           opacity="0.06"
           initial={{ scale: 0 }}
@@ -104,7 +104,7 @@ export function EcosystemMapVisual({ data, accent }: Props) {
           <circle
             cx={cx}
             cy={cy}
-            r="36"
+            r="44"
             fill="#18181B"
             stroke={center.color}
             strokeWidth="2"
@@ -115,7 +115,7 @@ export function EcosystemMapVisual({ data, accent }: Props) {
             textAnchor="middle"
             dominantBaseline="central"
             fill="#FAFAFA"
-            fontSize="11"
+            fontSize="14"
             fontFamily="ui-monospace, monospace"
             fontWeight="700"
           >
@@ -141,14 +141,14 @@ export function EcosystemMapVisual({ data, accent }: Props) {
               <circle
                 cx={pos.x}
                 cy={pos.y}
-                r="30"
+                r="38"
                 fill={sat.color}
                 opacity="0.05"
               />
               <circle
                 cx={pos.x}
                 cy={pos.y}
-                r="28"
+                r="35"
                 fill="#18181B"
                 stroke={sat.color}
                 strokeWidth="1"
@@ -159,7 +159,7 @@ export function EcosystemMapVisual({ data, accent }: Props) {
                 textAnchor="middle"
                 dominantBaseline="central"
                 fill="#FAFAFA"
-                fontSize="10"
+                fontSize="12"
                 fontFamily="ui-monospace, monospace"
                 fontWeight="500"
               >
@@ -172,7 +172,7 @@ export function EcosystemMapVisual({ data, accent }: Props) {
                   textAnchor="middle"
                   dominantBaseline="central"
                   fill="#71717A"
-                  fontSize="7"
+                  fontSize="9"
                   fontFamily="ui-monospace, monospace"
                 >
                   {sat.description.length > 20

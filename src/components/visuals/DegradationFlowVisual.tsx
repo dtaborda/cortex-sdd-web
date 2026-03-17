@@ -28,8 +28,8 @@ export function DegradationFlowVisual({ data, accent }: Props) {
   ];
 
   return (
-    <div className="w-full max-w-lg">
-      <p className="text-xs font-mono text-text-muted uppercase tracking-wider mb-6">
+    <div className="w-full max-w-2xl">
+      <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-6">
         Degradación de contexto
       </p>
 
@@ -41,10 +41,10 @@ export function DegradationFlowVisual({ data, accent }: Props) {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col items-center w-[110px]"
+              className="flex flex-col items-center w-[140px]"
             >
               {/* Quality bar container */}
-              <div className="w-full h-20 bg-bg-elevated rounded-lg border border-border-subtle p-2 flex flex-col justify-end relative overflow-hidden">
+              <div className="w-full h-28 bg-bg-elevated rounded-lg border border-border-subtle p-3 flex flex-col justify-end relative overflow-hidden">
                 <motion.div
                   initial={{ height: 0 }}
                   animate={{ height: `${stage.quality}%` }}
@@ -68,10 +68,10 @@ export function DegradationFlowVisual({ data, accent }: Props) {
               </div>
 
               {/* Label */}
-              <p className="text-xs text-text-primary font-medium mt-2 text-center leading-tight">
+              <p className="text-sm text-text-primary font-medium mt-2 text-center leading-tight">
                 {stage.label}
               </p>
-              <p className="text-[10px] font-mono text-text-muted mt-0.5">
+              <p className="text-xs font-mono text-text-muted mt-0.5">
                 {stage.tokens}
               </p>
             </motion.div>
@@ -84,7 +84,7 @@ export function DegradationFlowVisual({ data, accent }: Props) {
                 transition={{ delay: 0.4 + i * 0.2 }}
                 className="flex items-center mx-0.5 mt-[-20px]"
               >
-                <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                <svg width="20" height="14" viewBox="0 0 16 12" fill="none">
                   <path
                     d="M0 6H12M12 6L8 2M12 6L8 10"
                     stroke={accent}

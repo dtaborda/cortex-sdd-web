@@ -40,12 +40,12 @@ export function ModelRouterVisual({ data, accent }: Props) {
   );
 
   return (
-    <div className="w-full max-w-md">
-      <p className="text-xs font-mono text-text-muted uppercase tracking-wider mb-5">
+    <div className="w-full max-w-2xl">
+      <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-5">
         Model Router
       </p>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         {sorted.map((model, i) => {
           const tierColor = TIER_COLORS[model.tier] || accent;
 
@@ -59,21 +59,21 @@ export function ModelRouterVisual({ data, accent }: Props) {
                 duration: 0.5,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="flex items-center gap-3 p-3 rounded-lg bg-bg-surface border border-border-subtle"
+              className="flex items-center gap-4 p-4 rounded-lg bg-bg-surface border border-border-subtle"
             >
               {/* Tier indicator */}
               <div
-                className="w-1 h-10 rounded-full shrink-0"
+                className="w-1.5 h-12 rounded-full shrink-0"
                 style={{ backgroundColor: tierColor }}
               />
 
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-0.5">
-                  <span className="text-sm font-semibold text-text-primary">
+                  <span className="text-base font-semibold text-text-primary">
                     {model.name}
                   </span>
                   <span
-                    className="text-[10px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded"
+                    className="text-xs font-mono uppercase tracking-wider px-2 py-1 rounded"
                     style={{
                       color: tierColor,
                       backgroundColor: `${tierColor}15`,
@@ -82,7 +82,7 @@ export function ModelRouterVisual({ data, accent }: Props) {
                     {model.tier}
                   </span>
                 </div>
-                <p className="text-xs text-text-secondary truncate">
+                <p className="text-sm text-text-secondary truncate">
                   {model.bestFor}
                 </p>
               </div>
@@ -93,7 +93,7 @@ export function ModelRouterVisual({ data, accent }: Props) {
                   (_, j) => (
                     <div
                       key={j}
-                      className="w-1.5 h-4 rounded-sm"
+                      className="w-2 h-5 rounded-sm"
                       style={{ backgroundColor: tierColor, opacity: 0.4 + j * 0.2 }}
                     />
                   )

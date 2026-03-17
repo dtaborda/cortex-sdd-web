@@ -21,18 +21,18 @@ export function SignalVsNoiseVisual({ data }: Props) {
   ];
 
   return (
-    <div className="w-full max-w-md">
-      <div className="grid grid-cols-2 gap-3">
+    <div className="w-full max-w-2xl">
+      <div className="grid grid-cols-2 gap-4">
         {/* Signal column */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="space-y-3"
+          className="space-y-4"
         >
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-2 h-2 rounded-full bg-emerald-500" />
-            <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-emerald-400">
+            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+            <h3 className="text-sm font-mono font-semibold uppercase tracking-wider text-emerald-400">
               Señal
             </h3>
           </div>
@@ -47,16 +47,16 @@ export function SignalVsNoiseVisual({ data }: Props) {
                 duration: 0.4,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="flex items-start gap-2.5 p-2.5 rounded-md bg-emerald-500/5 border border-emerald-500/15"
+              className="flex items-start gap-3 p-3 rounded-md bg-emerald-500/5 border border-emerald-500/15"
             >
               <svg
-                className="w-4 h-4 shrink-0 mt-0.5 text-emerald-500"
+                className="w-5 h-5 shrink-0 mt-0.5 text-emerald-500"
                 viewBox="0 0 16 16"
                 fill="none"
               >
                 <circle cx="8" cy="8" r="3" fill="currentColor" />
               </svg>
-              <span className="text-sm text-text-primary leading-snug">
+              <span className="text-base text-text-primary leading-snug">
                 {item}
               </span>
             </motion.div>
@@ -71,11 +71,11 @@ export function SignalVsNoiseVisual({ data }: Props) {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="space-y-3"
+          className="space-y-4"
         >
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-2 h-2 rounded-full bg-red-500" />
-            <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-red-400">
+            <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
+            <h3 className="text-sm font-mono font-semibold uppercase tracking-wider text-red-400">
               Ruido
             </h3>
           </div>
@@ -90,16 +90,16 @@ export function SignalVsNoiseVisual({ data }: Props) {
                 duration: 0.4,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="flex items-start gap-2.5 p-2.5 rounded-md bg-red-500/5 border border-red-500/15"
+              className="flex items-start gap-3 p-3 rounded-md bg-red-500/5 border border-red-500/15"
             >
               <svg
-                className="w-4 h-4 shrink-0 mt-0.5 text-red-500"
+                className="w-5 h-5 shrink-0 mt-0.5 text-red-500"
                 viewBox="0 0 16 16"
                 fill="none"
               >
                 <circle cx="8" cy="8" r="3" fill="currentColor" />
               </svg>
-              <span className="text-sm text-text-primary leading-snug">
+              <span className="text-base text-text-primary leading-snug">
                 {item}
               </span>
             </motion.div>

@@ -71,11 +71,11 @@ export function ArchitectureMapVisual({ data, accent }: Props) {
     });
   }
 
-  const svgWidth = 420;
-  const svgHeight = 260;
+  const svgWidth = 540;
+  const svgHeight = 340;
   const cx = svgWidth / 2;
   const cy = svgHeight / 2;
-  const radius = 95;
+  const radius = 125;
   const count = satellites.length;
 
   const positions = satellites.map((_, i) => {
@@ -87,8 +87,8 @@ export function ArchitectureMapVisual({ data, accent }: Props) {
   });
 
   return (
-    <div className="w-full max-w-md">
-      <p className="text-xs font-mono text-text-muted uppercase tracking-wider mb-4">
+    <div className="w-full max-w-2xl">
+      <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
         Arquitectura
       </p>
 
@@ -144,7 +144,7 @@ export function ArchitectureMapVisual({ data, accent }: Props) {
           <circle
             cx={cx}
             cy={cy}
-            r="30"
+            r="38"
             fill="#18181B"
             stroke={centerColor}
             strokeWidth="2"
@@ -155,7 +155,7 @@ export function ArchitectureMapVisual({ data, accent }: Props) {
             textAnchor="middle"
             dominantBaseline="central"
             fill="#FAFAFA"
-            fontSize="10"
+            fontSize="13"
             fontFamily="ui-monospace, monospace"
             fontWeight="600"
           >
@@ -182,7 +182,7 @@ export function ArchitectureMapVisual({ data, accent }: Props) {
               <circle
                 cx={pos.x}
                 cy={pos.y}
-                r="28"
+                r="35"
                 fill="#18181B"
                 stroke={sat.color}
                 strokeWidth="1"
@@ -190,11 +190,11 @@ export function ArchitectureMapVisual({ data, accent }: Props) {
               />
               <text
                 x={pos.x}
-                y={sat.description ? pos.y - 4 : pos.y}
+                y={sat.description ? pos.y - 5 : pos.y}
                 textAnchor="middle"
                 dominantBaseline="central"
                 fill="#FAFAFA"
-                fontSize="9"
+                fontSize="11"
                 fontFamily="ui-monospace, monospace"
                 fontWeight="500"
               >
@@ -209,7 +209,7 @@ export function ArchitectureMapVisual({ data, accent }: Props) {
                   textAnchor="middle"
                   dominantBaseline="central"
                   fill="#71717A"
-                  fontSize="7"
+                  fontSize="9"
                   fontFamily="ui-monospace, monospace"
                 >
                   {sat.description.length > 18

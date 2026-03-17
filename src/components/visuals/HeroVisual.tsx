@@ -15,7 +15,7 @@ export function HeroVisual({ data, accent }: Props) {
   const displayNumber = moduleNumber !== null ? String(moduleNumber).padStart(2, "0") : "";
 
   return (
-    <div className="w-full max-w-md flex flex-col items-center justify-center relative">
+    <div className="w-full max-w-2xl flex flex-col items-center justify-center relative">
       {/* Background geometric decorations */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center"
@@ -24,7 +24,7 @@ export function HeroVisual({ data, accent }: Props) {
         transition={{ duration: 1 }}
       >
         {/* Concentric circles */}
-        {[140, 110, 80].map((r, i) => (
+        {[180, 140, 100].map((r, i) => (
           <motion.div
             key={r}
             className="absolute rounded-full border"
@@ -78,7 +78,7 @@ export function HeroVisual({ data, accent }: Props) {
           />
 
           <span
-            className="text-[100px] leading-none font-mono font-bold tracking-tighter relative"
+            className="text-[120px] leading-none font-mono font-bold tracking-tighter relative"
             style={{
               color: accent,
               opacity: 0.15,
@@ -96,7 +96,7 @@ export function HeroVisual({ data, accent }: Props) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="text-base font-medium text-text-secondary text-center relative z-10 mt-2"
+          className="text-lg font-medium text-text-secondary text-center relative z-10 mt-2"
         >
           {moduleTitle}
         </motion.p>
@@ -111,7 +111,7 @@ export function HeroVisual({ data, accent }: Props) {
           className="relative z-10"
         >
           {/* Abstract logo / icon */}
-          <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+          <svg width="160" height="160" viewBox="0 0 120 120" fill="none">
             <motion.circle
               cx="60"
               cy="60"

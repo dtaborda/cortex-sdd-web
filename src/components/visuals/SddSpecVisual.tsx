@@ -158,8 +158,8 @@ export function SddSpecVisual({ data, accent }: Props) {
 
       <svg
         viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-        className="w-full max-w-[740px]"
-        style={{ maxHeight: "88vh" }}
+        className="w-full"
+        style={{ maxHeight: "92vh" }}
       >
         <defs>
           {/* Glow filter — accent */}
@@ -231,7 +231,7 @@ export function SddSpecVisual({ data, accent }: Props) {
           textAnchor="middle"
           className="font-mono"
           fill={chaosColor}
-          fontSize="10"
+          fontSize="12"
           letterSpacing="3"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 0.7 }}
@@ -246,7 +246,7 @@ export function SddSpecVisual({ data, accent }: Props) {
           textAnchor="middle"
           className="font-mono"
           fill={accent}
-          fontSize="10"
+          fontSize="12"
           letterSpacing="3"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 0.7 }}
@@ -303,7 +303,7 @@ export function SddSpecVisual({ data, accent }: Props) {
                 y={baseY + 4}
                 className="font-mono"
                 fill="#8888AA"
-                fontSize="10"
+                fontSize="12"
                 transform={`rotate(${rotation} ${itemX + 90} ${baseY})`}
               >
                 {item}
@@ -561,7 +561,7 @@ export function SddSpecVisual({ data, accent }: Props) {
                 y={nodeY - 4}
                 className="font-mono"
                 fill="#F0F0F5"
-                fontSize="13"
+                fontSize="14"
                 fontWeight="600"
                 letterSpacing="1"
                 initial={{ opacity: 0, x: 15 }}
@@ -581,7 +581,7 @@ export function SddSpecVisual({ data, accent }: Props) {
                 y={nodeY + 14}
                 className="font-mono"
                 fill="#8888AA"
-                fontSize="10"
+                fontSize="12"
                 initial={{ opacity: 0, x: 15 }}
                 animate={{ opacity: 0.7, x: 0 }}
                 transition={{
@@ -600,7 +600,7 @@ export function SddSpecVisual({ data, accent }: Props) {
                 textAnchor="end"
                 className="font-mono"
                 fill={accent}
-                fontSize="9"
+                fontSize="10"
                 opacity="0.3"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.3 }}
@@ -647,7 +647,7 @@ export function SddSpecVisual({ data, accent }: Props) {
           textAnchor="middle"
           className="font-mono"
           fill={accent}
-          fontSize="8"
+          fontSize="10"
           letterSpacing="1"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.35 }}
@@ -685,7 +685,7 @@ export function SddSpecVisual({ data, accent }: Props) {
             textAnchor="middle"
             className="font-mono"
             fill={accent}
-            fontSize="11"
+            fontSize="13"
             fontWeight="600"
             letterSpacing="2"
             animate={{ opacity: [0.6, 1, 0.6] }}
@@ -701,7 +701,7 @@ export function SddSpecVisual({ data, accent }: Props) {
             textAnchor="middle"
             className="font-mono"
             fill="#8888AA"
-            fontSize="9"
+            fontSize="11"
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.5 }}
             transition={{ delay: 3.0, duration: 0.6 }}

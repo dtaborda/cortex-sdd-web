@@ -16,7 +16,7 @@ export function TokenPredictionVisual({ data, accent }: Props) {
   ];
 
   return (
-    <div className="w-full max-w-md space-y-8">
+    <div className="w-full max-w-2xl space-y-8">
       {/* Token sequence */}
       <div className="flex items-center gap-2 flex-wrap">
         {tokens.map((token, i) => (
@@ -25,7 +25,7 @@ export function TokenPredictionVisual({ data, accent }: Props) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.15 }}
-            className="px-3 py-1.5 rounded-md bg-bg-elevated border border-border-default font-mono text-sm text-text-primary"
+            className="px-4 py-2 rounded-md bg-bg-elevated border border-border-default font-mono text-base text-text-primary"
           >
             {token}
           </motion.span>
@@ -34,7 +34,7 @@ export function TokenPredictionVisual({ data, accent }: Props) {
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="px-3 py-1.5 rounded-md border border-dashed font-mono text-sm"
+          className="px-4 py-2 rounded-md border border-dashed font-mono text-base"
           style={{ borderColor: accent, color: accent }}
         >
           ???
@@ -42,8 +42,8 @@ export function TokenPredictionVisual({ data, accent }: Props) {
       </div>
 
       {/* Predictions */}
-      <div className="space-y-3">
-        <p className="text-xs font-mono text-text-muted uppercase tracking-wider">
+      <div className="space-y-4">
+        <p className="text-sm font-mono text-text-muted uppercase tracking-wider">
           Probabilidades
         </p>
         {predictions
@@ -54,12 +54,12 @@ export function TokenPredictionVisual({ data, accent }: Props) {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5 + i * 0.1 }}
-              className="flex items-center gap-3"
+              className="flex items-center gap-4"
             >
-              <span className="w-20 text-right text-sm font-mono text-text-secondary">
+              <span className="w-24 text-right text-base font-mono text-text-secondary">
                 {pred.label}
               </span>
-              <div className="flex-1 h-7 bg-bg-elevated rounded-md overflow-hidden relative">
+              <div className="flex-1 h-9 bg-bg-elevated rounded-md overflow-hidden relative">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${pred.probability}%` }}
@@ -73,7 +73,7 @@ export function TokenPredictionVisual({ data, accent }: Props) {
                     backgroundColor: i === 0 ? accent : `${accent}44`,
                   }}
                 />
-                <span className="absolute right-2 top-1/2 -translate-y-1/2 text-xs font-mono text-text-muted">
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-mono text-text-muted">
                   {pred.probability}%
                 </span>
               </div>

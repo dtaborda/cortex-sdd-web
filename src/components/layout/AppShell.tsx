@@ -215,7 +215,7 @@ export function AppShell() {
         style={{ paddingLeft: isFocusMode ? 0 : 260 }}
         className="pt-[60px] h-screen transition-all duration-300"
       >
-        <div className="h-full grid grid-cols-1 lg:grid-cols-[45%_55%] gap-0">
+        <div className="h-full grid grid-cols-1 lg:grid-cols-[38%_62%] gap-0">
           <ContentPane
             slide={currentSlide}
             module={currentModule}
@@ -226,7 +226,7 @@ export function AppShell() {
             canGoPrev={canGoPrev}
             canGoNext={canGoNext}
           />
-          <div className="p-4 lg:p-6">
+          <div className="p-2 lg:p-3">
             <VisualPane slide={currentSlide} module={currentModule} />
           </div>
         </div>

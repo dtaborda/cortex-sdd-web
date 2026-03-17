@@ -24,13 +24,13 @@ export function ContextLayersVisual({ data }: Props) {
   const total = layers.reduce((sum, l) => sum + l.size, 0);
 
   return (
-    <div className="w-full max-w-md space-y-5">
-      <p className="text-xs font-mono text-text-muted uppercase tracking-wider">
+    <div className="w-full max-w-2xl space-y-6">
+      <p className="text-sm font-mono text-text-muted uppercase tracking-wider">
         Composición del contexto
       </p>
 
       {/* Stacked bar */}
-      <div className="w-full h-10 bg-bg-elevated rounded-lg overflow-hidden flex">
+      <div className="w-full h-12 bg-bg-elevated rounded-lg overflow-hidden flex">
         {layers.map((layer, i) => {
           const pct = (layer.size / total) * 100;
           return (
@@ -47,7 +47,7 @@ export function ContextLayersVisual({ data }: Props) {
               style={{ backgroundColor: layer.color }}
             >
               {pct >= 15 && (
-                <span className="text-[10px] font-mono text-white/90 font-medium truncate px-1">
+                <span className="text-xs font-mono text-white/90 font-medium truncate px-1">
                   {Math.round(pct)}%
                 </span>
               )}
@@ -57,7 +57,7 @@ export function ContextLayersVisual({ data }: Props) {
       </div>
 
       {/* Legend */}
-      <div className="space-y-2.5">
+      <div className="space-y-3">
         {layers.map((layer, i) => {
           const pct = Math.round((layer.size / total) * 100);
           return (
@@ -72,13 +72,13 @@ export function ContextLayersVisual({ data }: Props) {
                 className="w-3 h-3 rounded-sm shrink-0"
                 style={{ backgroundColor: layer.color }}
               />
-              <span className="text-sm text-text-primary flex-1">
+              <span className="text-base text-text-primary flex-1">
                 {layer.label}
               </span>
-              <span className="text-xs font-mono text-text-muted">
+              <span className="text-sm font-mono text-text-muted">
                 ~{pct}%
               </span>
-              <div className="w-20 h-1.5 bg-bg-elevated rounded-full overflow-hidden">
+              <div className="w-24 h-2 bg-bg-elevated rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${pct}%` }}

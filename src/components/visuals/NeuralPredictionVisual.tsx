@@ -93,8 +93,8 @@ export function NeuralPredictionVisual({ data, accent }: Props) {
 
       <svg
         viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-        className="w-full max-w-[700px]"
-        style={{ maxHeight: "85vh" }}
+        className="w-full"
+        style={{ maxHeight: "90vh" }}
       >
         <defs>
           {/* Glow filter for accent elements */}
@@ -142,7 +142,7 @@ export function NeuralPredictionVisual({ data, accent }: Props) {
           textAnchor="middle"
           className="font-mono"
           fill={accent}
-          fontSize="9"
+          fontSize="11"
           opacity="0.5"
           letterSpacing="2"
           initial={{ opacity: 0 }}
@@ -158,7 +158,7 @@ export function NeuralPredictionVisual({ data, accent }: Props) {
           textAnchor="middle"
           className="font-mono"
           fill={accent}
-          fontSize="9"
+          fontSize="11"
           opacity="0.5"
           letterSpacing="2"
           initial={{ opacity: 0 }}
@@ -174,7 +174,7 @@ export function NeuralPredictionVisual({ data, accent }: Props) {
           textAnchor="middle"
           className="font-mono"
           fill={accent}
-          fontSize="9"
+          fontSize="11"
           opacity="0.5"
           letterSpacing="2"
           initial={{ opacity: 0 }}
@@ -281,7 +281,7 @@ export function NeuralPredictionVisual({ data, accent }: Props) {
                 textAnchor="end"
                 className="font-mono"
                 fill={accent}
-                fontSize="8"
+                fontSize="10"
                 opacity="0.4"
               >
                 t{i}
@@ -348,7 +348,7 @@ export function NeuralPredictionVisual({ data, accent }: Props) {
                 textAnchor="middle"
                 className="font-mono"
                 fill="#F0F0F5"
-                fontSize="10"
+                fontSize="12"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.7 }}
                 transition={{ delay: layerDelay + 0.2, duration: 0.4 }}
@@ -362,7 +362,7 @@ export function NeuralPredictionVisual({ data, accent }: Props) {
                 y={y + layerHeight / 2 + 3}
                 className="font-mono"
                 fill={accent}
-                fontSize="8"
+                fontSize="10"
                 opacity="0.3"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.3 }}
@@ -463,7 +463,7 @@ export function NeuralPredictionVisual({ data, accent }: Props) {
                 y={y - 8}
                 className="font-mono"
                 fill={isTop ? "#F0F0F5" : "#8888AA"}
-                fontSize={isTop ? "12" : "10"}
+                fontSize={isTop ? "14" : "12"}
               >
                 {pred.token}
               </text>
@@ -523,7 +523,7 @@ export function NeuralPredictionVisual({ data, accent }: Props) {
                 textAnchor="end"
                 className="font-mono"
                 fill={isTop ? accent : "#555577"}
-                fontSize="10"
+                fontSize="12"
                 fontWeight={isTop ? "bold" : "normal"}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -587,7 +587,7 @@ export function NeuralPredictionVisual({ data, accent }: Props) {
           textAnchor="middle"
           className="font-mono"
           fill={accent}
-          fontSize="10"
+          fontSize="12"
           letterSpacing="3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.3 }}

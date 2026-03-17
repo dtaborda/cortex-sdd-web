@@ -22,12 +22,12 @@ export function RoleSpecializationVisual({ data }: Props) {
   ];
 
   return (
-    <div className="w-full max-w-md">
-      <p className="text-xs font-mono text-text-muted uppercase tracking-wider mb-5">
+    <div className="w-full max-w-2xl">
+      <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-5">
         Roles especializados
       </p>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-4">
         {roles.map((role, i) => (
           <motion.div
             key={role.name}
@@ -48,23 +48,23 @@ export function RoleSpecializationVisual({ data }: Props) {
               style={{ backgroundColor: role.color }}
             />
 
-            <div className={`p-4 ${i === 0 ? "flex items-center gap-4" : ""}`}>
+            <div className={`p-5 ${i === 0 ? "flex items-center gap-4" : ""}`}>
               {/* Role indicator */}
               <div
-                className="w-8 h-8 rounded-md flex items-center justify-center shrink-0 mb-2"
+                className="w-10 h-10 rounded-md flex items-center justify-center shrink-0 mb-2"
                 style={{ backgroundColor: `${role.color}20` }}
               >
                 <div
-                  className="w-2.5 h-2.5 rounded-full"
+                  className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: role.color }}
                 />
               </div>
 
               <div>
-                <p className="text-sm font-semibold text-text-primary">
+                <p className="text-base font-semibold text-text-primary">
                   {role.name}
                 </p>
-                <p className="text-xs text-text-secondary mt-0.5 leading-relaxed">
+                <p className="text-sm text-text-secondary mt-0.5 leading-relaxed">
                   {role.description}
                 </p>
               </div>

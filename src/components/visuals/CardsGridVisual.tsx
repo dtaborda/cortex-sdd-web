@@ -35,9 +35,9 @@ export function CardsGridVisual({ data, accent }: Props) {
   const cols = cards.length <= 4 ? 2 : 3;
 
   return (
-    <div className="w-full max-w-md">
+    <div className="w-full max-w-2xl">
       <div
-        className="grid gap-3"
+        className="grid gap-4"
         style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
       >
         {cards.map((card, i) => (
@@ -50,7 +50,7 @@ export function CardsGridVisual({ data, accent }: Props) {
               duration: 0.5,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="rounded-lg bg-bg-surface border border-border-subtle p-4 group hover:border-border-default transition-colors"
+            className="rounded-lg bg-bg-surface border border-border-subtle p-5 group hover:border-border-default transition-colors"
           >
             {/* Step number */}
             <span
@@ -60,10 +60,10 @@ export function CardsGridVisual({ data, accent }: Props) {
               {String(i + 1).padStart(2, "0")}
             </span>
 
-            <h4 className="text-sm font-semibold text-text-primary mb-1 leading-snug">
+            <h4 className="text-base font-semibold text-text-primary mb-1 leading-snug">
               {card.title}
             </h4>
-            <p className="text-xs text-text-secondary leading-relaxed">
+            <p className="text-sm text-text-secondary leading-relaxed">
               {card.description}
             </p>
           </motion.div>

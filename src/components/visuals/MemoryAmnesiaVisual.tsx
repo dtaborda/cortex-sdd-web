@@ -87,8 +87,8 @@ export function MemoryAmnesiaVisual({ data, accent }: Props) {
 
       <svg
         viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-        className="w-full max-w-[740px]"
-        style={{ maxHeight: "88vh" }}
+        className="w-full"
+        style={{ maxHeight: "92vh" }}
       >
         <defs>
           {/* Glow filter — accent */}
@@ -163,7 +163,7 @@ export function MemoryAmnesiaVisual({ data, accent }: Props) {
             textAnchor="middle"
             className="font-mono"
             fill={accent}
-            fontSize="11"
+            fontSize="13"
             fontWeight="600"
             letterSpacing="2"
           >
@@ -206,7 +206,7 @@ export function MemoryAmnesiaVisual({ data, accent }: Props) {
             textAnchor="middle"
             className="font-mono"
             fill={dangerColor}
-            fontSize="11"
+            fontSize="13"
             fontWeight="600"
             letterSpacing="2"
           >
@@ -286,7 +286,7 @@ export function MemoryAmnesiaVisual({ data, accent }: Props) {
                 y={y}
                 className="font-mono"
                 fill="#F0F0F5"
-                fontSize="10"
+                fontSize="12"
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: delayBase + 0.15, duration: 0.4 }}
@@ -300,7 +300,7 @@ export function MemoryAmnesiaVisual({ data, accent }: Props) {
                 y={y + 16}
                 className="font-mono"
                 fill={accent}
-                fontSize="8"
+                fontSize="10"
                 opacity="0.5"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.5 }}
@@ -411,7 +411,7 @@ export function MemoryAmnesiaVisual({ data, accent }: Props) {
             textAnchor="middle"
             className="font-mono"
             fill={dangerColor}
-            fontSize="8"
+            fontSize="10"
             fontWeight="bold"
             letterSpacing="1"
           >
@@ -423,7 +423,7 @@ export function MemoryAmnesiaVisual({ data, accent }: Props) {
             textAnchor="middle"
             className="font-mono"
             fill={dangerColor}
-            fontSize="8"
+            fontSize="10"
             fontWeight="bold"
             letterSpacing="1"
           >
@@ -552,7 +552,7 @@ export function MemoryAmnesiaVisual({ data, accent }: Props) {
                 y={y}
                 className="font-mono"
                 fill="#8888AA"
-                fontSize="10"
+                fontSize="12"
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 0.7, x: 0 }}
                 transition={{ delay: delayBase + 0.15, duration: 0.4 }}
@@ -566,7 +566,7 @@ export function MemoryAmnesiaVisual({ data, accent }: Props) {
                 y={y + 16}
                 className="font-mono"
                 fill={dangerColor}
-                fontSize="8"
+                fontSize="10"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.4 }}
                 transition={{ delay: delayBase + 0.3, duration: 0.3 }}
@@ -622,7 +622,7 @@ export function MemoryAmnesiaVisual({ data, accent }: Props) {
             textAnchor="middle"
             className="font-mono"
             fill={dangerColor}
-            fontSize="12"
+            fontSize="14"
             fontWeight="700"
             letterSpacing="4"
             animate={{ opacity: [0.6, 1, 0.6] }}

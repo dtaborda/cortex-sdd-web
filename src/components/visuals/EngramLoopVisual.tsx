@@ -23,10 +23,10 @@ export function EngramLoopVisual({ data, accent }: Props) {
   ];
 
   const count = steps.length;
-  const centerX = 200;
-  const centerY = 140;
-  const radiusX = 160;
-  const radiusY = 100;
+  const centerX = 260;
+  const centerY = 180;
+  const radiusX = 210;
+  const radiusY = 130;
 
   // Position steps around an ellipse
   const positions = steps.map((_, i) => {
@@ -38,12 +38,12 @@ export function EngramLoopVisual({ data, accent }: Props) {
   });
 
   return (
-    <div className="w-full max-w-md">
-      <p className="text-xs font-mono text-text-muted uppercase tracking-wider mb-4">
+    <div className="w-full max-w-2xl">
+      <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
         Ciclo de memoria persistente
       </p>
 
-      <svg viewBox="0 0 400 280" className="w-full" style={{ maxHeight: 280 }}>
+      <svg viewBox="0 0 520 360" className="w-full" style={{ maxHeight: 400 }}>
         <defs>
           <marker
             id="loop-arrow"
@@ -113,7 +113,7 @@ export function EngramLoopVisual({ data, accent }: Props) {
               <circle
                 cx={pos.x}
                 cy={pos.y}
-                r="28"
+                r="35"
                 fill="#18181B"
                 stroke={accent}
                 strokeWidth="1"
@@ -126,7 +126,7 @@ export function EngramLoopVisual({ data, accent }: Props) {
                 textAnchor="middle"
                 dominantBaseline="central"
                 fill="#FAFAFA"
-                fontSize="9"
+                fontSize="11"
                 fontFamily="ui-monospace, monospace"
                 fontWeight="600"
               >
@@ -140,7 +140,7 @@ export function EngramLoopVisual({ data, accent }: Props) {
                 textAnchor="middle"
                 dominantBaseline="central"
                 fill="#A1A1AA"
-                fontSize="7"
+                fontSize="9"
                 fontFamily="ui-monospace, monospace"
               >
                 {step.description.length > 18

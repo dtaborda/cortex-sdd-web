@@ -26,8 +26,8 @@ export function TimelineVisual({ data, accent }: Props) {
   ];
 
   return (
-    <div className="w-full max-w-md">
-      <p className="text-xs font-mono text-text-muted uppercase tracking-wider mb-5">
+    <div className="w-full max-w-2xl">
+      <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-5">
         Timeline
       </p>
 
@@ -41,7 +41,7 @@ export function TimelineVisual({ data, accent }: Props) {
           style={{ backgroundColor: `${accent}30` }}
         />
 
-        <div className="space-y-5">
+        <div className="space-y-6">
           {entries.map((entry, i) => {
             const label = entry.label || entry.phase || `Paso ${i + 1}`;
             const desc = entry.description || "";
@@ -69,7 +69,7 @@ export function TimelineVisual({ data, accent }: Props) {
                     stiffness: 300,
                     damping: 20,
                   }}
-                  className="w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 z-10"
+                  className="w-7 h-7 rounded-full border-2 flex items-center justify-center shrink-0 z-10"
                   style={{
                     borderColor: accent,
                     backgroundColor: "#09090B",
@@ -84,17 +84,17 @@ export function TimelineVisual({ data, accent }: Props) {
                 {/* Content */}
                 <div className="flex-1 pb-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold text-text-primary">
+                    <span className="text-base font-semibold text-text-primary">
                       {label}
                     </span>
                     {duration && (
-                      <span className="text-[10px] font-mono text-text-muted px-1.5 py-0.5 rounded bg-bg-elevated">
+                      <span className="text-xs font-mono text-text-muted px-2 py-1 rounded bg-bg-elevated">
                         {duration}
                       </span>
                     )}
                   </div>
                   {desc && (
-                    <p className="text-xs text-text-secondary mt-0.5 leading-relaxed">
+                    <p className="text-sm text-text-secondary mt-0.5 leading-relaxed">
                       {desc}
                     </p>
                   )}

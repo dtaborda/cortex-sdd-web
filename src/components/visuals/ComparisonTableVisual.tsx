@@ -12,7 +12,7 @@ export function ComparisonTableVisual({ data, accent }: Props) {
   const rows = (data.rows as string[][]) || [];
 
   return (
-    <div className="w-full max-w-lg">
+    <div className="w-full max-w-2xl">
       {/* Headers */}
       <div
         className="grid gap-0.5"
@@ -21,7 +21,7 @@ export function ComparisonTableVisual({ data, accent }: Props) {
         {headers.map((header, i) => (
           <div
             key={i}
-            className="px-4 py-2.5 text-xs font-mono font-semibold uppercase tracking-wider rounded-t-lg"
+            className="px-5 py-3 text-sm font-mono font-semibold uppercase tracking-wider rounded-t-lg"
             style={{
               backgroundColor: i === 0 ? "#27272A" : `${accent}15`,
               color: i === 0 ? "#A1A1AA" : accent,
@@ -46,7 +46,7 @@ export function ComparisonTableVisual({ data, accent }: Props) {
             {row.map((cell, cellIdx) => (
               <div
                 key={cellIdx}
-                className="px-4 py-3 text-sm"
+                className="px-5 py-4 text-base"
                 style={{
                   backgroundColor: "#18181B",
                   color: cellIdx === 0 ? "#A1A1AA" : "#FAFAFA",

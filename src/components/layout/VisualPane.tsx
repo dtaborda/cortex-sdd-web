@@ -24,7 +24,7 @@ export function VisualPane({ slide, module }: VisualPaneProps) {
       />
 
       {/* Visual content */}
-      <div className="relative z-10 h-full flex items-center justify-center p-6">
+      <div className="relative z-10 h-full flex items-center justify-center p-3">
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.id}

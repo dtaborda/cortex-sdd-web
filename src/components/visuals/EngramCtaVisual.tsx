@@ -65,8 +65,8 @@ export function EngramCtaVisual({ data, accent }: Props) {
 
       <svg
         viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-        className="w-full max-w-[640px]"
-        style={{ maxHeight: "88vh" }}
+        className="w-full"
+        style={{ maxHeight: "92vh" }}
       >
         <defs>
           {/* Glow filter */}
@@ -142,7 +142,7 @@ export function EngramCtaVisual({ data, accent }: Props) {
           textAnchor="middle"
           className="font-mono"
           fill={accent}
-          fontSize="10"
+          fontSize="12"
           letterSpacing="3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
@@ -320,7 +320,7 @@ export function EngramCtaVisual({ data, accent }: Props) {
                   y={y + pillHeight / 2 + 4}
                   className="font-mono"
                   fill="#F0F0F5"
-                  fontSize="10"
+                  fontSize="12"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 0.85 }}
                   transition={{ delay: delayBase + 0.1, duration: 0.3 }}

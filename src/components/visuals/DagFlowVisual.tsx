@@ -44,10 +44,10 @@ export function DagFlowVisual({ data, accent }: Props) {
   const minX = Math.min(...nodes.map((n) => n.x));
   const minY = Math.min(...nodes.map((n) => n.y));
 
-  const svgWidth = 480;
-  const svgHeight = 160;
-  const padX = 60;
-  const padY = 35;
+  const svgWidth = 620;
+  const svgHeight = 220;
+  const padX = 70;
+  const padY = 45;
 
   function scaleX(x: number): number {
     if (maxX === minX) return svgWidth / 2;
@@ -60,19 +60,19 @@ export function DagFlowVisual({ data, accent }: Props) {
   }
 
   const nodeMap = new Map(nodes.map((n) => [n.id, n]));
-  const nodeW = 80;
-  const nodeH = 30;
+  const nodeW = 95;
+  const nodeH = 38;
 
   return (
-    <div className="w-full max-w-lg">
-      <p className="text-xs font-mono text-text-muted uppercase tracking-wider mb-4">
+    <div className="w-full max-w-3xl">
+      <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
         Directed Acyclic Graph
       </p>
 
       <svg
         viewBox={`0 0 ${svgWidth} ${svgHeight}`}
         className="w-full"
-        style={{ maxHeight: 200 }}
+        style={{ maxHeight: 300 }}
       >
         <defs>
           <marker
@@ -153,7 +153,7 @@ export function DagFlowVisual({ data, accent }: Props) {
                 textAnchor="middle"
                 dominantBaseline="central"
                 fill="#FAFAFA"
-                fontSize="11"
+                fontSize="13"
                 fontFamily="ui-monospace, monospace"
               >
                 {node.label}

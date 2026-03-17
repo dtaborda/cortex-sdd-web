@@ -49,7 +49,7 @@ export function ContentPane({
           animate="animate"
           exit="exit"
           transition={transition}
-          className="flex-1 overflow-y-auto px-6 lg:px-10 py-8 lg:py-10"
+          className="flex-1 overflow-y-auto px-5 lg:px-8 py-6 lg:py-8"
         >
           {/* Eyebrow */}
           {slide.eyebrow && (
@@ -122,7 +122,7 @@ export function ContentPane({
       </AnimatePresence>
 
       {/* Bottom navigation */}
-      <div className="shrink-0 flex items-center justify-between px-6 lg:px-10 py-4 border-t border-border-subtle">
+      <div className="shrink-0 flex items-center justify-between px-5 lg:px-8 py-4 border-t border-border-subtle">
         <button
           onClick={onPrev}
           disabled={!canGoPrev}

@@ -24,29 +24,29 @@ export function SkillsLoadingVisual({ data, accent }: Props) {
   const loadedSet = new Set(loaded);
 
   return (
-    <div className="w-full max-w-md space-y-5">
+    <div className="w-full max-w-2xl space-y-6">
       {/* Task description */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="p-3 rounded-lg bg-bg-elevated border border-border-default"
+        className="p-4 rounded-lg bg-bg-elevated border border-border-default"
       >
-        <p className="text-[10px] font-mono text-text-muted uppercase tracking-wider mb-1">
+        <p className="text-xs font-mono text-text-muted uppercase tracking-wider mb-1">
           Tarea detectada
         </p>
-        <p className="text-sm font-mono text-text-primary leading-snug">
+        <p className="text-base font-mono text-text-primary leading-snug">
           {task}
         </p>
       </motion.div>
 
       {/* Skills label */}
-      <p className="text-xs font-mono text-text-muted uppercase tracking-wider">
+      <p className="text-sm font-mono text-text-muted uppercase tracking-wider">
         Skills disponibles
       </p>
 
       {/* Skills grid */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-3">
         {available.map((skill, i) => {
           const isLoaded = loadedSet.has(skill);
 
@@ -63,7 +63,7 @@ export function SkillsLoadingVisual({ data, accent }: Props) {
                 duration: 0.4,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border text-xs font-mono"
+              className="flex items-center gap-2 px-3 py-2 rounded-md border text-sm font-mono"
               style={{
                 backgroundColor: isLoaded ? `${accent}12` : "#18181B",
                 borderColor: isLoaded ? `${accent}40` : "#27272A",
@@ -99,7 +99,7 @@ export function SkillsLoadingVisual({ data, accent }: Props) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="text-xs text-text-muted"
+        className="text-sm text-text-muted"
       >
         <span style={{ color: accent }} className="font-mono font-semibold">
           {loaded.length}
