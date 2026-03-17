@@ -28,27 +28,27 @@ export const stackBibliotecasModuleEn: ModuleDefinition = {
           {
             label: "SDD",
             color: "#00F0FF",
-            description: "Planificaci\u00f3n estructurada por fases",
+            description: "Structured phase-based planning",
           },
           {
             label: "Engram",
             color: "#EC4899",
-            description: "Memoria persistente cross-session",
+            description: "Persistent cross-session memory",
           },
           {
             label: "Skills",
             color: "#84CC16",
-            description: "Contexto t\u00e9cnico bajo demanda",
+            description: "On-demand technical context",
           },
           {
             label: "MCP",
             color: "#3B82F6",
-            description: "Conexi\u00f3n con herramientas externas",
+            description: "External tool connections",
           },
           {
             label: "Context7",
             color: "#10B981",
-            description: "Documentaci\u00f3n actualizada al instante",
+            description: "Real-time updated documentation",
           },
         ],
       },
@@ -107,28 +107,28 @@ export const stackBibliotecasModuleEn: ModuleDefinition = {
       visualData: {
         layers: [
           {
-            label: "Orquestaci\u00f3n (SDD)",
-            description: "Define fases, coordina sub-agentes",
+            label: "Orchestration (SDD)",
+            description: "Defines phases, coordinates sub-agents",
             color: "#00F0FF",
           },
           {
-            label: "Memoria (Engram)",
-            description: "Persiste decisiones cross-session",
+            label: "Memory (Engram)",
+            description: "Persists decisions cross-session",
             color: "#EC4899",
           },
           {
-            label: "Conocimiento (Skills)",
-            description: "Inyecta expertise bajo demanda",
+            label: "Knowledge (Skills)",
+            description: "Injects expertise on demand",
             color: "#84CC16",
           },
           {
-            label: "Conexiones (MCP)",
-            description: "Integra herramientas externas",
+            label: "Connections (MCP)",
+            description: "Integrates external tools",
             color: "#3B82F6",
           },
           {
             label: "Docs (Context7)",
-            description: "Documentaci\u00f3n actualizada en tiempo real",
+            description: "Real-time updated documentation",
             color: "#10B981",
           },
         ],

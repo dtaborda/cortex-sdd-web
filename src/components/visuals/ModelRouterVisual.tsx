@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 interface Model {
@@ -27,13 +28,21 @@ const TIER_ORDER: Record<string, number> = {
   alternative: 3,
 };
 
-export function ModelRouterVisual({ data, accent }: Props) {
-  const models = (data.models as Model[]) || [
-    { name: "Claude Opus", bestFor: "Arquitectura, diseño complejo", tier: "premium" },
-    { name: "Claude Sonnet", bestFor: "Implementación, code review", tier: "balanced" },
-    { name: "Claude Haiku", bestFor: "Tareas rápidas, refactors simples", tier: "fast" },
-    { name: "GPT-4o", bestFor: "Segunda opinión, validación cruzada", tier: "alternative" },
-  ];
+export function ModelRouterVisual({ data, accent, locale }: Props) {
+  const isEn = locale === "en";
+  const models = (data.models as Model[]) || (isEn
+    ? [
+        { name: "Claude Opus", bestFor: "Architecture, complex design", tier: "premium" },
+        { name: "Claude Sonnet", bestFor: "Implementation, code review", tier: "balanced" },
+        { name: "Claude Haiku", bestFor: "Quick tasks, simple refactors", tier: "fast" },
+        { name: "GPT-4o", bestFor: "Second opinion, cross-validation", tier: "alternative" },
+      ]
+    : [
+        { name: "Claude Opus", bestFor: "Arquitectura, diseño complejo", tier: "premium" },
+        { name: "Claude Sonnet", bestFor: "Implementación, code review", tier: "balanced" },
+        { name: "Claude Haiku", bestFor: "Tareas rápidas, refactors simples", tier: "fast" },
+        { name: "GPT-4o", bestFor: "Segunda opinión, validación cruzada", tier: "alternative" },
+      ]);
 
   const sorted = [...models].sort(
     (a, b) => (TIER_ORDER[a.tier] ?? 99) - (TIER_ORDER[b.tier] ?? 99)

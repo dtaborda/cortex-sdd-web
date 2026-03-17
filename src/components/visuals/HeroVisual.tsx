@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
-export function HeroVisual({ data, accent }: Props) {
+export function HeroVisual({ data, accent, locale }: Props) {
   const moduleNumber = (data.moduleNumber as number) ?? null;
   const moduleTitle = (data.moduleTitle as string) ?? "";
 

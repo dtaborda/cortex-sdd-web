@@ -23,7 +23,7 @@ export const chatVsAgenteModuleEn: ModuleDefinition = {
         "What gives the agent the ability to act on the real world? Tools.",
       visualType: "comparison-table",
       visualData: {
-        headers: ["Chat", "Agente"],
+        headers: ["Chat", "Agent"],
         rows: [
           ["Answers questions", "Ships complete tasks"],
           ["One interaction", "Iterative loop"],
@@ -58,11 +58,11 @@ export const chatVsAgenteModuleEn: ModuleDefinition = {
       visualData: {
         center: { label: "LLM", color: "#10B981" },
         connections: [
-          { label: "Bash", direction: "out", description: "Ejecutar comandos" },
-          { label: "Read/Write", direction: "both", description: "Manipular archivos" },
-          { label: "Search", direction: "out", description: "Buscar en codebase" },
-          { label: "MCP", direction: "both", description: "Servicios externos" },
-          { label: "Git", direction: "out", description: "Control de versiones" },
+          { label: "Bash", direction: "out", description: "Execute commands" },
+          { label: "Read/Write", direction: "both", description: "Manipulate files" },
+          { label: "Search", direction: "out", description: "Search codebase" },
+          { label: "MCP", direction: "both", description: "External services" },
+          { label: "Git", direction: "out", description: "Version control" },
         ],
       },
       tags: ["tools", "mcp", "execution"],

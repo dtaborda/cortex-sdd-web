@@ -5,9 +5,11 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
-export function TokenPredictionVisual({ data, accent }: Props) {
+export function TokenPredictionVisual({ data, accent, locale }: Props) {
+  const isEn = locale === "en";
   const tokens = (data.tokens as string[]) || ["Hola", "como", "estas"];
   const predictions = (data.predictions as { label: string; probability: number }[]) || [
     { label: "bien", probability: 67 },
@@ -44,7 +46,7 @@ export function TokenPredictionVisual({ data, accent }: Props) {
       {/* Predictions */}
       <div className="space-y-4">
         <p className="text-sm font-mono text-text-muted uppercase tracking-wider">
-          Probabilidades
+          {isEn ? "Probabilities" : "Probabilidades"}
         </p>
         {predictions
           .sort((a, b) => b.probability - a.probability)

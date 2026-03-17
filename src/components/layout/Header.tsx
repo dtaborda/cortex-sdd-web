@@ -3,7 +3,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Eye, EyeOff } from "lucide-react";
 import type { ModuleDefinition } from "@/types/content";
-import { useI18n } from "@/lib/i18n";
+import { useI18n, SUPPORTED_LOCALES } from "@/lib/i18n";
+import { FlagIcon } from "@/components/ui/FlagIcon";
 import { cn } from "@/lib/utils";
 
 interface HeaderProps {
@@ -67,30 +68,21 @@ export function Header({
       <div className="flex items-center gap-3 min-w-[180px] justify-end">
         {/* Language selector */}
         <div className="flex items-center gap-1">
-          <button
-            onClick={() => setLocale("es")}
-            className={cn(
-              "text-lg px-1.5 py-0.5 rounded transition-all duration-150",
-              locale === "es"
-                ? "opacity-100 scale-110 bg-bg-elevated"
-                : "opacity-40 hover:opacity-70"
-            )}
-            title="Espa\u00f1ol (Argentina)"
-          >
-            \ud83c\udde6\ud83c\uddf7
-          </button>
-          <button
-            onClick={() => setLocale("en")}
-            className={cn(
-              "text-lg px-1.5 py-0.5 rounded transition-all duration-150",
-              locale === "en"
-                ? "opacity-100 scale-110 bg-bg-elevated"
-                : "opacity-40 hover:opacity-70"
-            )}
-            title="English (US)"
-          >
-            \ud83c\uddfa\ud83c\uddf8
-          </button>
+          {SUPPORTED_LOCALES.map((loc) => (
+            <button
+              key={loc.code}
+              onClick={() => setLocale(loc.code)}
+              className={cn(
+                "px-1.5 py-1 rounded transition-all duration-150",
+                locale === loc.code
+                  ? "opacity-100 scale-110 bg-bg-elevated"
+                  : "opacity-40 hover:opacity-70"
+              )}
+              title={loc.label}
+            >
+              <FlagIcon country={loc.country} className="w-8 h-6" />
+            </button>
+          ))}
         </div>
 
         <div className="hidden md:flex items-center gap-1.5 text-text-ghost">

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 interface DagNode {
@@ -19,7 +20,7 @@ interface DagEdge {
   to: string;
 }
 
-export function DagFlowVisual({ data, accent }: Props) {
+export function DagFlowVisual({ data, accent, locale }: Props) {
   const nodes = (data.nodes as DagNode[]) || [
     { id: "proposal", label: "Proposal", x: 50, y: 50 },
     { id: "spec", label: "Spec", x: 200, y: 20 },

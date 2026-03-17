@@ -11,6 +11,12 @@ import {
 
 export type Locale = "es" | "en";
 
+export const SUPPORTED_LOCALES = [
+  { code: "es" as const, label: "Español", country: "AR" as const },
+  { code: "en" as const, label: "English", country: "US" as const },
+  // Future: { code: "pt" as const, label: "Português", country: "BR" as const },
+] as const;
+
 interface I18nContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;

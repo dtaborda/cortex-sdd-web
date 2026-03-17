@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 interface Card {
@@ -12,25 +13,45 @@ interface Card {
   description: string;
 }
 
-export function CardsGridVisual({ data, accent }: Props) {
-  const cards = (data.cards as Card[]) || [
-    {
-      title: "Instalar Claude Code",
-      description: "El agente de código que ejecuta, no solo responde",
-    },
-    {
-      title: "Configurar AGENTS.md",
-      description: "Las instrucciones base que definen comportamiento",
-    },
-    {
-      title: "Crear tu primer Skill",
-      description: "Conocimiento especializado cargado on-demand",
-    },
-    {
-      title: "Activar Engram",
-      description: "Memoria persistente entre sesiones",
-    },
-  ];
+export function CardsGridVisual({ data, accent, locale }: Props) {
+  const isEn = locale === "en";
+  const cards = (data.cards as Card[]) || (isEn
+    ? [
+        {
+          title: "Install Claude Code",
+          description: "The code agent that executes, not just responds",
+        },
+        {
+          title: "Configure AGENTS.md",
+          description: "Base instructions that define behavior",
+        },
+        {
+          title: "Create your first Skill",
+          description: "Specialized knowledge loaded on-demand",
+        },
+        {
+          title: "Activate Engram",
+          description: "Persistent memory across sessions",
+        },
+      ]
+    : [
+        {
+          title: "Instalar Claude Code",
+          description: "El agente de código que ejecuta, no solo responde",
+        },
+        {
+          title: "Configurar AGENTS.md",
+          description: "Las instrucciones base que definen comportamiento",
+        },
+        {
+          title: "Crear tu primer Skill",
+          description: "Conocimiento especializado cargado on-demand",
+        },
+        {
+          title: "Activar Engram",
+          description: "Memoria persistente entre sesiones",
+        },
+      ]);
 
   const cols = cards.length <= 4 ? 2 : 3;
 

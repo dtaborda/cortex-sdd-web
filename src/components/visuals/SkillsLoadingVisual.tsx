@@ -5,9 +5,11 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
-export function SkillsLoadingVisual({ data, accent }: Props) {
+export function SkillsLoadingVisual({ data, accent, locale }: Props) {
+  const isEn = locale === "en";
   const available = (data.available as string[]) || [
     "react-19",
     "nextjs-15",
@@ -19,7 +21,9 @@ export function SkillsLoadingVisual({ data, accent }: Props) {
     "django-drf",
   ];
   const loaded = (data.loaded as string[]) || ["react-19", "tailwind-4", "typescript"];
-  const task = (data.task as string) || "Crear componente React con Tailwind y tipos estrictos";
+  const task = (data.task as string) || (isEn
+    ? "Create React component with Tailwind and strict types"
+    : "Crear componente React con Tailwind y tipos estrictos");
 
   const loadedSet = new Set(loaded);
 
@@ -33,7 +37,7 @@ export function SkillsLoadingVisual({ data, accent }: Props) {
         className="p-4 rounded-lg bg-bg-elevated border border-border-default"
       >
         <p className="text-xs font-mono text-text-muted uppercase tracking-wider mb-1">
-          Tarea detectada
+          {isEn ? "Detected task" : "Tarea detectada"}
         </p>
         <p className="text-base font-mono text-text-primary leading-snug">
           {task}
@@ -42,7 +46,7 @@ export function SkillsLoadingVisual({ data, accent }: Props) {
 
       {/* Skills label */}
       <p className="text-sm font-mono text-text-muted uppercase tracking-wider">
-        Skills disponibles
+        {isEn ? "Available skills" : "Skills disponibles"}
       </p>
 
       {/* Skills grid */}
@@ -104,7 +108,9 @@ export function SkillsLoadingVisual({ data, accent }: Props) {
         <span style={{ color: accent }} className="font-mono font-semibold">
           {loaded.length}
         </span>{" "}
-        de {available.length} skills cargados para esta tarea
+        {isEn
+          ? `of ${available.length} skills loaded for this task`
+          : `de ${available.length} skills cargados para esta tarea`}
       </motion.p>
     </div>
   );

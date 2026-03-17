@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 interface SideData {
@@ -12,26 +13,47 @@ interface SideData {
   items: string[];
 }
 
-export function OutcomeComparisonVisual({ data }: Props) {
-  const without = (data.without as SideData) || {
-    title: "Sin arquitectura",
-    items: [
-      "Contexto degradado a los 40 mensajes",
-      "Re-trabajo constante",
-      "Alucinaciones frecuentes",
-      "Sin memoria entre sesiones",
-    ],
-  };
+export function OutcomeComparisonVisual({ data, locale }: Props) {
+  const isEn = locale === "en";
+  const without = (data.without as SideData) || (isEn
+    ? {
+        title: "Without architecture",
+        items: [
+          "Context degraded after 40 messages",
+          "Constant rework",
+          "Frequent hallucinations",
+          "No memory between sessions",
+        ],
+      }
+    : {
+        title: "Sin arquitectura",
+        items: [
+          "Contexto degradado a los 40 mensajes",
+          "Re-trabajo constante",
+          "Alucinaciones frecuentes",
+          "Sin memoria entre sesiones",
+        ],
+      });
 
-  const withArch = (data.with as SideData) || {
-    title: "Con arquitectura",
-    items: [
-      "Contexto limpio por sub-agente",
-      "Verificación contra specs",
-      "Calidad consistente",
-      "Memoria persistente con Engram",
-    ],
-  };
+  const withArch = (data.with as SideData) || (isEn
+    ? {
+        title: "With architecture",
+        items: [
+          "Clean context per sub-agent",
+          "Verification against specs",
+          "Consistent quality",
+          "Persistent memory with Engram",
+        ],
+      }
+    : {
+        title: "Con arquitectura",
+        items: [
+          "Contexto limpio por sub-agente",
+          "Verificación contra specs",
+          "Calidad consistente",
+          "Memoria persistente con Engram",
+        ],
+      });
 
   return (
     <div className="w-full max-w-2xl">

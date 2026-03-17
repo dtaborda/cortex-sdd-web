@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 interface Layer {
@@ -13,20 +14,28 @@ interface Layer {
   color: string;
 }
 
-export function ContextLayersVisual({ data }: Props) {
-  const layers = (data.layers as Layer[]) || [
-    { label: "System prompt", size: 15, color: "#3B82F6" },
-    { label: "Conversación previa", size: 35, color: "#6366F1" },
-    { label: "Archivos/código", size: 30, color: "#8B5CF6" },
-    { label: "Tu mensaje actual", size: 20, color: "#A855F7" },
-  ];
+export function ContextLayersVisual({ data, locale }: Props) {
+  const isEn = locale === "en";
+  const layers = (data.layers as Layer[]) || (isEn
+    ? [
+        { label: "System prompt", size: 15, color: "#3B82F6" },
+        { label: "Previous conversation", size: 35, color: "#6366F1" },
+        { label: "Files/code", size: 30, color: "#8B5CF6" },
+        { label: "Your current message", size: 20, color: "#A855F7" },
+      ]
+    : [
+        { label: "System prompt", size: 15, color: "#3B82F6" },
+        { label: "Conversación previa", size: 35, color: "#6366F1" },
+        { label: "Archivos/código", size: 30, color: "#8B5CF6" },
+        { label: "Tu mensaje actual", size: 20, color: "#A855F7" },
+      ]);
 
   const total = layers.reduce((sum, l) => sum + l.size, 0);
 
   return (
     <div className="w-full max-w-2xl space-y-6">
       <p className="text-sm font-mono text-text-muted uppercase tracking-wider">
-        Composición del contexto
+        {isEn ? "Context composition" : "Composición del contexto"}
       </p>
 
       {/* Stacked bar */}

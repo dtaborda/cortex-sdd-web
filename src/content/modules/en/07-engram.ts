@@ -79,28 +79,28 @@ export const engramModuleEn: ModuleDefinition = {
       visualData: {
         steps: [
           {
-            label: "Sesi\u00f3n activa",
-            description: "El agente trabaja y descubre",
+            label: "Active session",
+            description: "Agent works and discovers",
           },
           {
             label: "mem_save",
-            description: "Persiste decisiones clave",
+            description: "Persists key decisions",
           },
           {
-            label: "Compactaci\u00f3n",
-            description: "El contexto se pierde",
+            label: "Compaction",
+            description: "Context is lost",
           },
           {
             label: "mem_search",
-            description: "Nueva sesi\u00f3n busca contexto",
+            description: "New session searches for context",
           },
           {
             label: "mem_get",
-            description: "Recupera observaci\u00f3n completa",
+            description: "Retrieves full observation",
           },
           {
-            label: "Continuidad",
-            description: "Trabaja como si nunca se fue",
+            label: "Continuity",
+            description: "Picks up right where it left off",
           },
         ],
       },

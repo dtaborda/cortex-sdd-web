@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 // Deterministic pseudo-random for SSR safety
@@ -27,7 +28,8 @@ const DEFAULT_QUESTIONS = [
   { text: "\u00bfQu\u00e9 state manager?", short: "State?" },
 ];
 
-export function MemoryAmnesiaVisual({ data, accent }: Props) {
+export function MemoryAmnesiaVisual({ data, accent, locale }: Props) {
+  const isEn = locale === "en";
   const decisions = (data.decisions as typeof DEFAULT_DECISIONS) || DEFAULT_DECISIONS;
   const questions = (data.questions as typeof DEFAULT_QUESTIONS) || DEFAULT_QUESTIONS;
 
@@ -167,7 +169,7 @@ export function MemoryAmnesiaVisual({ data, accent }: Props) {
             fontWeight="600"
             letterSpacing="2"
           >
-            SESI\u00d3N 1
+            {isEn ? "SESSION 1" : "SESIÓN 1"}
           </text>
 
           {/* Status indicator */}
@@ -210,7 +212,7 @@ export function MemoryAmnesiaVisual({ data, accent }: Props) {
             fontWeight="600"
             letterSpacing="2"
           >
-            SESI\u00d3N 2
+            {isEn ? "SESSION 2" : "SESIÓN 2"}
           </text>
 
           {/* Status indicator — blinking warning */}
@@ -571,7 +573,7 @@ export function MemoryAmnesiaVisual({ data, accent }: Props) {
                 animate={{ opacity: 0.4 }}
                 transition={{ delay: delayBase + 0.3, duration: 0.3 }}
               >
-                {item.short} \u2014 sin contexto
+                {item.short} {isEn ? "— no context" : "— sin contexto"}
               </motion.text>
 
               {/* Pulsing question glow */}
@@ -628,7 +630,7 @@ export function MemoryAmnesiaVisual({ data, accent }: Props) {
             animate={{ opacity: [0.6, 1, 0.6] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            AMNESIA ENTRE SESIONES
+            {isEn ? "CROSS-SESSION AMNESIA" : "AMNESIA ENTRE SESIONES"}
           </motion.text>
         </motion.g>
 

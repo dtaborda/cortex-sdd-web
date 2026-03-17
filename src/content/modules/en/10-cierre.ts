@@ -24,7 +24,7 @@ export const cierreModuleEn: ModuleDefinition = {
       visualType: "outcome-comparison",
       visualData: {
         without: {
-          title: "Solo el modelo",
+          title: "Model alone",
           items: [
             "Disposable chat with no memory",
             "Ephemeral context that degrades",
@@ -34,7 +34,7 @@ export const cierreModuleEn: ModuleDefinition = {
           ],
         },
         with: {
-          title: "Modelo + Arquitectura",
+          title: "Model + Architecture",
           items: [
             "SDD orchestration with clear phases",
             "Context isolated by responsibility",

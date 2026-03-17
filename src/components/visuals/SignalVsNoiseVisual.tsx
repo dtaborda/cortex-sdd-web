@@ -5,20 +5,34 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
-export function SignalVsNoiseVisual({ data }: Props) {
-  const signals = (data.signals as string[]) || [
-    "Decisión arquitectónica",
-    "Bug fix y causa raíz",
-    "Patrón establecido",
-  ];
+export function SignalVsNoiseVisual({ data, locale }: Props) {
+  const isEn = locale === "en";
+  const signals = (data.signals as string[]) || (isEn
+    ? [
+        "Architectural decision",
+        "Bug fix and root cause",
+        "Established pattern",
+      ]
+    : [
+        "Decisión arquitectónica",
+        "Bug fix y causa raíz",
+        "Patrón establecido",
+      ]);
 
-  const noise = (data.noise as string[]) || [
-    "Output de terminal",
-    "Código fuente entero",
-    "Conversación casual",
-  ];
+  const noise = (data.noise as string[]) || (isEn
+    ? [
+        "Terminal output",
+        "Entire source code",
+        "Casual conversation",
+      ]
+    : [
+        "Output de terminal",
+        "Código fuente entero",
+        "Conversación casual",
+      ]);
 
   return (
     <div className="w-full max-w-2xl">
@@ -33,7 +47,7 @@ export function SignalVsNoiseVisual({ data }: Props) {
           <div className="flex items-center gap-2 mb-4">
             <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
             <h3 className="text-sm font-mono font-semibold uppercase tracking-wider text-emerald-400">
-              Señal
+              {isEn ? "Signal" : "Señal"}
             </h3>
           </div>
 
@@ -76,7 +90,7 @@ export function SignalVsNoiseVisual({ data }: Props) {
           <div className="flex items-center gap-2 mb-4">
             <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
             <h3 className="text-sm font-mono font-semibold uppercase tracking-wider text-red-400">
-              Ruido
+              {isEn ? "Noise" : "Ruido"}
             </h3>
           </div>
 

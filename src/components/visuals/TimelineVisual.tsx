@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 interface TimelineEntry {
@@ -14,16 +15,24 @@ interface TimelineEntry {
   duration?: string;
 }
 
-export function TimelineVisual({ data, accent }: Props) {
+export function TimelineVisual({ data, accent, locale }: Props) {
+  const isEn = locale === "en";
   // Support both "entries" and "events" data shapes
   const rawEntries = (data.entries as TimelineEntry[]) || (data.events as TimelineEntry[]);
 
-  const entries: TimelineEntry[] = rawEntries || [
-    { label: "Inicio", description: "Setup del proyecto" },
-    { label: "Diseño", description: "Arquitectura y specs" },
-    { label: "Implementación", description: "Código y tests" },
-    { label: "Deploy", description: "Producción" },
-  ];
+  const entries: TimelineEntry[] = rawEntries || (isEn
+    ? [
+        { label: "Start", description: "Project setup" },
+        { label: "Design", description: "Architecture and specs" },
+        { label: "Implementation", description: "Code and tests" },
+        { label: "Deploy", description: "Production" },
+      ]
+    : [
+        { label: "Inicio", description: "Setup del proyecto" },
+        { label: "Diseño", description: "Arquitectura y specs" },
+        { label: "Implementación", description: "Código y tests" },
+        { label: "Deploy", description: "Producción" },
+      ]);
 
   return (
     <div className="w-full max-w-2xl">
@@ -43,7 +52,7 @@ export function TimelineVisual({ data, accent }: Props) {
 
         <div className="space-y-6">
           {entries.map((entry, i) => {
-            const label = entry.label || entry.phase || `Paso ${i + 1}`;
+            const label = entry.label || entry.phase || (isEn ? `Step ${i + 1}` : `Paso ${i + 1}`);
             const desc = entry.description || "";
             const duration = entry.duration || "";
 

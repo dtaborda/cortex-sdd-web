@@ -80,7 +80,7 @@ export const skillsRegistryModuleEn: ModuleDefinition = {
           "zustand-5",
         ],
         loaded: ["react-19", "tailwind-4"],
-        task: "Implementar componente React con estilos Tailwind",
+        task: "Implement React component with Tailwind styles",
       },
       tags: ["skill-md", "on-demand", "context"],
     },

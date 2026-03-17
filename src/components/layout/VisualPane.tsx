@@ -7,9 +7,10 @@ import { VisualRenderer } from "@/components/visuals/VisualRenderer";
 interface VisualPaneProps {
   slide: SlideDefinition;
   module: ModuleDefinition;
+  locale?: string;
 }
 
-export function VisualPane({ slide, module }: VisualPaneProps) {
+export function VisualPane({ slide, module, locale }: VisualPaneProps) {
   const accent = module.accentColor;
 
   return (
@@ -34,7 +35,7 @@ export function VisualPane({ slide, module }: VisualPaneProps) {
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="w-full h-full flex items-center justify-center"
           >
-            <VisualRenderer slide={slide} module={module} />
+            <VisualRenderer slide={slide} module={module} locale={locale} />
           </motion.div>
         </AnimatePresence>
       </div>

@@ -248,7 +248,7 @@ export function AppShell() {
             canGoNext={canGoNext}
           />
           <div className="p-2 lg:p-3">
-            <VisualPane slide={currentSlide} module={currentModule} />
+            <VisualPane slide={currentSlide} module={currentModule} locale={locale} />
           </div>
         </div>
       </main>

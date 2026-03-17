@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 interface Role {
@@ -13,18 +14,26 @@ interface Role {
   color: string;
 }
 
-export function RoleSpecializationVisual({ data }: Props) {
-  const roles = (data.roles as Role[]) || [
-    { name: "Orchestrator", description: "Coordina y delega", color: "#00F0FF" },
-    { name: "Spec Writer", description: "Define requisitos", color: "#3B82F6" },
-    { name: "Designer", description: "Arquitectura técnica", color: "#10B981" },
-    { name: "Implementer", description: "Escribe código", color: "#8B5CF6" },
-  ];
+export function RoleSpecializationVisual({ data, locale }: Props) {
+  const isEn = locale === "en";
+  const roles = (data.roles as Role[]) || (isEn
+    ? [
+        { name: "Orchestrator", description: "Coordinates and delegates", color: "#00F0FF" },
+        { name: "Spec Writer", description: "Defines requirements", color: "#3B82F6" },
+        { name: "Designer", description: "Technical architecture", color: "#10B981" },
+        { name: "Implementer", description: "Writes code", color: "#8B5CF6" },
+      ]
+    : [
+        { name: "Orchestrator", description: "Coordina y delega", color: "#00F0FF" },
+        { name: "Spec Writer", description: "Define requisitos", color: "#3B82F6" },
+        { name: "Designer", description: "Arquitectura técnica", color: "#10B981" },
+        { name: "Implementer", description: "Escribe código", color: "#8B5CF6" },
+      ]);
 
   return (
     <div className="w-full max-w-2xl">
       <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-5">
-        Roles especializados
+        {isEn ? "Specialized roles" : "Roles especializados"}
       </p>
 
       <div className="grid grid-cols-2 gap-4">

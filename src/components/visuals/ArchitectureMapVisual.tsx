@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 interface CenterNode {
@@ -24,7 +25,8 @@ interface AgentNode {
   color?: string;
 }
 
-export function ArchitectureMapVisual({ data, accent }: Props) {
+export function ArchitectureMapVisual({ data, accent, locale }: Props) {
+  const isEn = locale === "en";
   // Support multiple data shapes from the content modules
   const center = data.center as CenterNode | string | undefined;
   const connections = data.connections as Connection[] | undefined;
@@ -89,7 +91,7 @@ export function ArchitectureMapVisual({ data, accent }: Props) {
   return (
     <div className="w-full max-w-2xl">
       <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
-        Arquitectura
+        {isEn ? "Architecture" : "Arquitectura"}
       </p>
 
       <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} className="w-full">

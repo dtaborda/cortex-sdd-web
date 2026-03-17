@@ -31,9 +31,9 @@ export const contextWindowModuleEn: ModuleDefinition = {
       visualData: {
         layers: [
           { label: "System prompt", size: 15, color: "#3B82F6" },
-          { label: "Conversaci\u00f3n previa", size: 35, color: "#6366F1" },
-          { label: "Archivos/c\u00f3digo", size: 30, color: "#8B5CF6" },
-          { label: "Tu mensaje actual", size: 20, color: "#A855F7" },
+          { label: "Previous conversation", size: 35, color: "#6366F1" },
+          { label: "Files/code", size: 30, color: "#8B5CF6" },
+          { label: "Your current message", size: 20, color: "#A855F7" },
         ],
       },
       tags: ["context", "window", "tokens"],
@@ -58,10 +58,10 @@ export const contextWindowModuleEn: ModuleDefinition = {
       visualType: "degradation-flow",
       visualData: {
         stages: [
-          { label: "Contexto limpio", quality: 95, tokens: "10K" },
-          { label: "Acumulaci\u00f3n", quality: 70, tokens: "60K" },
-          { label: "Compactaci\u00f3n", quality: 45, tokens: "120K" },
-          { label: "Degradaci\u00f3n", quality: 20, tokens: "180K" },
+          { label: "Clean context", quality: 95, tokens: "10K" },
+          { label: "Accumulation", quality: 70, tokens: "60K" },
+          { label: "Compaction", quality: 45, tokens: "120K" },
+          { label: "Degradation", quality: 20, tokens: "180K" },
         ],
       },
       tags: ["degradation", "compaction", "noise"],

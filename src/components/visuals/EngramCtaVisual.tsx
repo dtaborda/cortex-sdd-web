@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 // Deterministic pseudo-random for SSR safety
@@ -22,7 +23,8 @@ const DEFAULT_FEATURES = [
   "Open source MIT",
 ];
 
-export function EngramCtaVisual({ data, accent }: Props) {
+export function EngramCtaVisual({ data, accent, locale }: Props) {
+  const isEn = locale === "en";
   const author = (data.author as string) || "Gentleman Programming";
   const repo =
     (data.repo as string) || "https://github.com/gentleman-programming/engram";
@@ -363,7 +365,7 @@ export function EngramCtaVisual({ data, accent }: Props) {
           animate={{ opacity: 0.7 }}
           transition={{ delay: 3.0, duration: 0.5 }}
         >
-          {`Creado por ${author}`}
+          {isEn ? `Built by ${author}` : `Creado por ${author}`}
         </motion.text>
 
         {/* ══════════════════════════════════════

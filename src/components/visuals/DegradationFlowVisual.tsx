@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 interface Stage {
@@ -19,18 +20,26 @@ function qualityColor(quality: number): string {
   return "#EF4444";
 }
 
-export function DegradationFlowVisual({ data, accent }: Props) {
-  const stages = (data.stages as Stage[]) || [
-    { label: "Limpio", quality: 95, tokens: "10K" },
-    { label: "Acumulación", quality: 70, tokens: "60K" },
-    { label: "Compactación", quality: 45, tokens: "120K" },
-    { label: "Degradación", quality: 20, tokens: "180K" },
-  ];
+export function DegradationFlowVisual({ data, accent, locale }: Props) {
+  const isEn = locale === "en";
+  const stages = (data.stages as Stage[]) || (isEn
+    ? [
+        { label: "Clean", quality: 95, tokens: "10K" },
+        { label: "Accumulation", quality: 70, tokens: "60K" },
+        { label: "Compaction", quality: 45, tokens: "120K" },
+        { label: "Degradation", quality: 20, tokens: "180K" },
+      ]
+    : [
+        { label: "Limpio", quality: 95, tokens: "10K" },
+        { label: "Acumulación", quality: 70, tokens: "60K" },
+        { label: "Compactación", quality: 45, tokens: "120K" },
+        { label: "Degradación", quality: 20, tokens: "180K" },
+      ]);
 
   return (
     <div className="w-full max-w-2xl">
       <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-6">
-        Degradación de contexto
+        {isEn ? "Context degradation" : "Degradación de contexto"}
       </p>
 
       <div className="flex items-start gap-1">

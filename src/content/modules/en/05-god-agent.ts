@@ -30,10 +30,10 @@ export const godAgentModuleEn: ModuleDefinition = {
       visualType: "degradation-flow",
       visualData: {
         stages: [
-          { label: "Proyecto chico", quality: 90, tokens: "15K" },
-          { label: "Crecimiento", quality: 65, tokens: "50K" },
-          { label: "Instrucciones infladas", quality: 40, tokens: "90K" },
-          { label: "God Agent colapsa", quality: 15, tokens: "150K" },
+          { label: "Small project", quality: 90, tokens: "15K" },
+          { label: "Growth", quality: 65, tokens: "50K" },
+          { label: "Bloated instructions", quality: 40, tokens: "90K" },
+          { label: "God Agent collapses", quality: 15, tokens: "150K" },
         ],
       },
       tags: ["god-agent", "anti-pattern", "scale"],
@@ -97,12 +97,12 @@ export const godAgentModuleEn: ModuleDefinition = {
       visualData: {
         before: {
           label: "God Agent",
-          description: "Un agente, todas las tareas",
+          description: "One agent, all the tasks",
           color: "#EF4444",
         },
         after: {
-          label: "Orquestador",
-          description: "Coordina sub-agentes especializados",
+          label: "Orchestrator",
+          description: "Coordinates specialized sub-agents",
           color: "#10B981",
         },
         agents: [

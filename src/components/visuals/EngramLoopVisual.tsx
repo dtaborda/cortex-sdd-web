@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 interface Step {
@@ -12,15 +13,25 @@ interface Step {
   description: string;
 }
 
-export function EngramLoopVisual({ data, accent }: Props) {
-  const steps = (data.steps as Step[]) || [
-    { label: "Sesión activa", description: "El agente trabaja" },
-    { label: "mem_save", description: "Persiste decisiones" },
-    { label: "Compactación", description: "El contexto se pierde" },
-    { label: "mem_search", description: "Busca contexto previo" },
-    { label: "mem_get", description: "Recupera observación" },
-    { label: "Continuidad", description: "Retoma donde dejó" },
-  ];
+export function EngramLoopVisual({ data, accent, locale }: Props) {
+  const isEn = locale === "en";
+  const steps = (data.steps as Step[]) || (isEn
+    ? [
+        { label: "Active session", description: "Agent works" },
+        { label: "mem_save", description: "Persists decisions" },
+        { label: "Compaction", description: "Context is lost" },
+        { label: "mem_search", description: "Searches prior context" },
+        { label: "mem_get", description: "Retrieves observation" },
+        { label: "Continuity", description: "Picks up where it left" },
+      ]
+    : [
+        { label: "Sesión activa", description: "El agente trabaja" },
+        { label: "mem_save", description: "Persiste decisiones" },
+        { label: "Compactación", description: "El contexto se pierde" },
+        { label: "mem_search", description: "Busca contexto previo" },
+        { label: "mem_get", description: "Recupera observación" },
+        { label: "Continuidad", description: "Retoma donde dejó" },
+      ]);
 
   const count = steps.length;
   const centerX = 260;
@@ -40,7 +51,7 @@ export function EngramLoopVisual({ data, accent }: Props) {
   return (
     <div className="w-full max-w-2xl">
       <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
-        Ciclo de memoria persistente
+        {isEn ? "Persistent memory cycle" : "Ciclo de memoria persistente"}
       </p>
 
       <svg viewBox="0 0 520 360" className="w-full" style={{ maxHeight: 400 }}>

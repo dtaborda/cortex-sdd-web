@@ -24,7 +24,7 @@ export const iaGenerativaModuleEn: ModuleDefinition = {
         "To understand what we can build, let's first look at how that prediction actually works under the hood.",
       visualType: "neural-prediction",
       visualData: {
-        inputTokens: ["El", "contexto", "define", "la"],
+        inputTokens: ["The", "context", "defines", "the"],
         layers: [
           "Embedding",
           "Attention",
@@ -34,10 +34,10 @@ export const iaGenerativaModuleEn: ModuleDefinition = {
           "Output",
         ],
         outputPredictions: [
-          { token: "respuesta", probability: 72 },
-          { token: "calidad", probability: 15 },
-          { token: "salida", probability: 8 },
-          { token: "nada", probability: 5 },
+          { token: "response", probability: 72 },
+          { token: "quality", probability: 15 },
+          { token: "output", probability: 8 },
+          { token: "nothing", probability: 5 },
         ],
       },
       tags: ["fundamentals", "llm", "prediction"],
@@ -61,12 +61,12 @@ export const iaGenerativaModuleEn: ModuleDefinition = {
         "If it's all statistical prediction, what can an LLM genuinely NOT do?",
       visualType: "token-prediction",
       visualData: {
-        tokens: ["El", "contexto", "define", "la"],
+        tokens: ["The", "context", "defines", "the"],
         predictions: [
-          { label: "respuesta", probability: 72 },
-          { label: "calidad", probability: 15 },
-          { label: "salida", probability: 8 },
-          { label: "nada", probability: 5 },
+          { label: "response", probability: 72 },
+          { label: "quality", probability: 15 },
+          { label: "output", probability: 8 },
+          { label: "nothing", probability: 5 },
         ],
       },
       tags: ["tokens", "prediction", "autoregressive"],

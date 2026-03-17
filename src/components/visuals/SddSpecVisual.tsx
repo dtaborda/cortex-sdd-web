@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 interface PipelineStep {
@@ -13,22 +14,39 @@ interface PipelineStep {
   icon: string;
 }
 
-const DEFAULT_CHAOS_ITEMS = [
+const DEFAULT_CHAOS_ITEMS_ES = [
   "¿Está terminado?",
   "// TODO: fix later",
   "prompt → código → 🤞",
   "Sin criterio de validación",
 ];
 
-const DEFAULT_PIPELINE: PipelineStep[] = [
+const DEFAULT_CHAOS_ITEMS_EN = [
+  "Is it done?",
+  "// TODO: fix later",
+  "prompt → code → 🤞",
+  "No validation criteria",
+];
+
+const DEFAULT_PIPELINE_ES: PipelineStep[] = [
   { step: "SPEC", label: "Qué debe hacer", icon: "file-text" },
   { step: "DESIGN", label: "Cómo se construye", icon: "compass" },
   { step: "IMPLEMENT", label: "Código real", icon: "code" },
   { step: "VERIFY", label: "Validado contra spec", icon: "check-circle" },
 ];
 
-const DEFAULT_SOURCE_OF_TRUTH =
+const DEFAULT_PIPELINE_EN: PipelineStep[] = [
+  { step: "SPEC", label: "What it should do", icon: "file-text" },
+  { step: "DESIGN", label: "How it's built", icon: "compass" },
+  { step: "IMPLEMENT", label: "Actual code", icon: "code" },
+  { step: "VERIFY", label: "Validated against spec", icon: "check-circle" },
+];
+
+const DEFAULT_SOURCE_OF_TRUTH_ES =
   "La spec es el contrato. Todo se mide contra ella.";
+
+const DEFAULT_SOURCE_OF_TRUTH_EN =
+  "The spec is the contract. Everything is measured against it.";
 
 // ---------- icon paths (inline SVG) ----------
 function StepIcon({
@@ -95,13 +113,14 @@ function seededRandom(seed: number) {
   return x - Math.floor(x);
 }
 
-export function SddSpecVisual({ data, accent }: Props) {
+export function SddSpecVisual({ data, accent, locale }: Props) {
+  const isEn = locale === "en";
   const chaosItems =
-    (data.chaosItems as string[]) || DEFAULT_CHAOS_ITEMS;
+    (data.chaosItems as string[]) || (isEn ? DEFAULT_CHAOS_ITEMS_EN : DEFAULT_CHAOS_ITEMS_ES);
   const pipeline =
-    (data.pipeline as PipelineStep[]) || DEFAULT_PIPELINE;
+    (data.pipeline as PipelineStep[]) || (isEn ? DEFAULT_PIPELINE_EN : DEFAULT_PIPELINE_ES);
   const sourceOfTruth =
-    (data.sourceOfTruth as string) || DEFAULT_SOURCE_OF_TRUTH;
+    (data.sourceOfTruth as string) || (isEn ? DEFAULT_SOURCE_OF_TRUTH_EN : DEFAULT_SOURCE_OF_TRUTH_ES);
 
   const chaosColor = "#FF3366";
 
@@ -237,7 +256,7 @@ export function SddSpecVisual({ data, accent }: Props) {
           animate={{ opacity: 0.7 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          SIN SPEC
+          {isEn ? "WITHOUT SPEC" : "SIN SPEC"}
         </motion.text>
 
         <motion.text
@@ -252,7 +271,7 @@ export function SddSpecVisual({ data, accent }: Props) {
           animate={{ opacity: 0.7 }}
           transition={{ delay: 1.2, duration: 0.6 }}
         >
-          CON SPEC
+          {isEn ? "WITH SPEC" : "CON SPEC"}
         </motion.text>
 
         {/* ════════════════════════════════════════════
@@ -654,7 +673,7 @@ export function SddSpecVisual({ data, accent }: Props) {
           transition={{ delay: 2.8, duration: 0.6 }}
           transform={`rotate(90, ${pipeZoneX + pipeZoneWidth - 40}, ${pipeStartY + ((pipeline.length - 1) * pipeStepHeight) / 2 + 20})`}
         >
-          VALIDAR CONTRA SPEC
+          {isEn ? "VALIDATE AGAINST SPEC" : "VALIDAR CONTRA SPEC"}
         </motion.text>
 
         {/* ════════════════════════════════════════════
@@ -691,7 +710,7 @@ export function SddSpecVisual({ data, accent }: Props) {
             animate={{ opacity: [0.6, 1, 0.6] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           >
-            SPEC = FUENTE DE VERDAD
+            {isEn ? "SPEC = SINGLE SOURCE OF TRUTH" : "SPEC = FUENTE DE VERDAD"}
           </motion.text>
 
           {/* Subtitle */}

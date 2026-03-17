@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 interface CenterDef {
@@ -18,18 +19,27 @@ interface SatelliteDef {
   description?: string;
 }
 
-export function EcosystemMapVisual({ data, accent }: Props) {
+export function EcosystemMapVisual({ data, accent, locale }: Props) {
+  const isEn = locale === "en";
   const center = (data.center as CenterDef) || {
     label: "Claude Code",
     color: accent,
   };
-  const satellites = (data.satellites as SatelliteDef[]) || [
-    { label: "Engram", color: "#EC4899", description: "Memoria persistente" },
-    { label: "SDD", color: "#00F0FF", description: "Spec-driven dev" },
-    { label: "Skills", color: "#84CC16", description: "Conocimiento on-demand" },
-    { label: "MCP", color: "#3B82F6", description: "Integración externa" },
-    { label: "AGENTS.md", color: "#F97316", description: "Instrucciones base" },
-  ];
+  const satellites = (data.satellites as SatelliteDef[]) || (isEn
+    ? [
+        { label: "Engram", color: "#EC4899", description: "Persistent memory" },
+        { label: "SDD", color: "#00F0FF", description: "Spec-driven dev" },
+        { label: "Skills", color: "#84CC16", description: "On-demand knowledge" },
+        { label: "MCP", color: "#3B82F6", description: "External integration" },
+        { label: "AGENTS.md", color: "#F97316", description: "Base instructions" },
+      ]
+    : [
+        { label: "Engram", color: "#EC4899", description: "Memoria persistente" },
+        { label: "SDD", color: "#00F0FF", description: "Spec-driven dev" },
+        { label: "Skills", color: "#84CC16", description: "Conocimiento on-demand" },
+        { label: "MCP", color: "#3B82F6", description: "Integración externa" },
+        { label: "AGENTS.md", color: "#F97316", description: "Instrucciones base" },
+      ]);
 
   const svgWidth = 540;
   const svgHeight = 400;
@@ -49,7 +59,7 @@ export function EcosystemMapVisual({ data, accent }: Props) {
   return (
     <div className="w-full max-w-2xl">
       <p className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
-        Ecosistema
+        {isEn ? "Ecosystem" : "Ecosistema"}
       </p>
 
       <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} className="w-full">

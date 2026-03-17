@@ -5,10 +5,12 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
-export function ComparisonTableVisual({ data, accent }: Props) {
-  const headers = (data.headers as string[]) || ["Antes", "Después"];
+export function ComparisonTableVisual({ data, accent, locale }: Props) {
+  const isEn = locale === "en";
+  const headers = (data.headers as string[]) || (isEn ? ["Before", "After"] : ["Antes", "Después"]);
   const rows = (data.rows as string[][]) || [];
 
   return (

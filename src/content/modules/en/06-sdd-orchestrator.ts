@@ -25,19 +25,19 @@ export const sddOrchestratorModuleEn: ModuleDefinition = {
       visualType: "sdd-spec-flow",
       visualData: {
         chaosItems: [
-          "\u00bfEst\u00e1 terminado?",
+          "Is it done yet?",
           "// TODO: fix later",
-          "prompt \u2192 c\u00f3digo \u2192 \ud83e\udd1e",
-          "Sin criterio de validaci\u00f3n",
+          "prompt \u2192 code \u2192 \ud83e\udd1e",
+          "No validation criteria",
         ],
         pipeline: [
-          { step: "SPEC", label: "Qu\u00e9 debe hacer", icon: "file-text" },
-          { step: "DESIGN", label: "C\u00f3mo se construye", icon: "compass" },
-          { step: "IMPLEMENT", label: "C\u00f3digo real", icon: "code" },
-          { step: "VERIFY", label: "Validado contra spec", icon: "check-circle" },
+          { step: "SPEC", label: "What it should do", icon: "file-text" },
+          { step: "DESIGN", label: "How it's built", icon: "compass" },
+          { step: "IMPLEMENT", label: "Actual code", icon: "code" },
+          { step: "VERIFY", label: "Validated against spec", icon: "check-circle" },
         ],
         sourceOfTruth:
-          "La spec es el contrato. Todo se mide contra ella.",
+          "The spec is the contract. Everything is measured against it.",
       },
       tags: ["sdd", "specs", "framework"],
     },
@@ -138,32 +138,32 @@ export const sddOrchestratorModuleEn: ModuleDefinition = {
         events: [
           {
             phase: "Proposal",
-            description: "POST /api/contacts con validaci\u00f3n y auth",
+            description: "POST /api/contacts with validation and auth",
             duration: "2 min",
           },
           {
             phase: "Spec",
-            description: "Campos, validaciones, 4 escenarios de error, respuesta 201",
+            description: "Fields, validations, 4 error scenarios, 201 response",
             duration: "3 min",
           },
           {
             phase: "Design",
-            description: "Tabla contacts, schema Zod, middleware auth, rate limiting",
+            description: "contacts table, Zod schema, auth middleware, rate limiting",
             duration: "3 min",
           },
           {
             phase: "Tasks",
-            description: "6 tareas: migration, schema, route, handler, tests, docs",
+            description: "6 tasks: migration, schema, route, handler, tests, docs",
             duration: "1 min",
           },
           {
             phase: "Apply",
-            description: "Implementaci\u00f3n task por task, 2 batches",
+            description: "Implementation task by task, 2 batches",
             duration: "8 min",
           },
           {
             phase: "Verify",
-            description: "4/4 escenarios pasan. 6/6 tasks completos.",
+            description: "4/4 scenarios pass. 6/6 tasks complete.",
             duration: "2 min",
           },
         ],

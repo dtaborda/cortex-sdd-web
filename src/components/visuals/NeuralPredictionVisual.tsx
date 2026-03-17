@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   data: Record<string, unknown>;
   accent: string;
+  locale?: string;
 }
 
 const LAYER_NAMES_DEFAULT = [
@@ -21,7 +22,7 @@ interface Prediction {
   probability: number;
 }
 
-export function NeuralPredictionVisual({ data, accent }: Props) {
+export function NeuralPredictionVisual({ data, accent, locale }: Props) {
   const inputTokens = (data.inputTokens as string[]) || [
     "El",
     "contexto",
