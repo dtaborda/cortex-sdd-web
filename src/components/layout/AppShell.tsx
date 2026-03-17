@@ -256,7 +256,7 @@ export function AppShell() {
   const accentColor = currentModule.accentColor;
 
   return (
-    <div className="min-h-screen w-screen bg-bg-base lg:h-screen lg:overflow-hidden">
+    <div className="w-screen bg-bg-base lg:h-screen lg:overflow-hidden overflow-x-hidden">
       <Header
         currentModule={currentModule}
         isFocusMode={isFocusMode}
@@ -278,23 +278,21 @@ export function AppShell() {
       <main
         className={cn(
           "pt-[60px] transition-all duration-300",
-          // Mobile: scrollable, natural flow
-          "min-h-[calc(100vh-60px)] overflow-y-auto",
-          // Desktop: fixed height split panel, no scroll
-          "lg:h-screen lg:overflow-hidden",
           // Desktop sidebar offset (only when not in focus mode)
           !isFocusMode && "lg:pl-[260px]",
-          // Mobile: add bottom padding for fixed nav bar
-          "pb-[72px] lg:pb-0"
+          // Desktop: fixed height, no scroll
+          "lg:h-[calc(100vh-60px)] lg:overflow-hidden",
         )}
       >
+        {/* Mobile: vertical scroll wrapper */}
         <div
           className={cn(
-            // Desktop: side-by-side split panels, full height
-            "lg:h-full lg:grid lg:grid-cols-[38%_62%] lg:gap-0",
-            // Mobile/Tablet: stacked vertically
-            "flex flex-col"
+            // Desktop: side-by-side split, fills remaining height
+            "lg:h-full lg:grid lg:grid-cols-[38%_62%]",
+            // Mobile: stacked column, scrollable
+            "max-lg:overflow-y-auto max-lg:pb-[80px]",
           )}
+          style={{ maxHeight: undefined }}
         >
           <ContentPane
             slide={currentSlide}
@@ -306,7 +304,7 @@ export function AppShell() {
             canGoPrev={canGoPrev}
             canGoNext={canGoNext}
           />
-          <div className="p-2 lg:p-3 min-h-[50vh] lg:min-h-0">
+          <div className="p-2 lg:p-3">
             <VisualPane slide={currentSlide} module={currentModule} locale={locale} />
           </div>
         </div>

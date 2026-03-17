@@ -72,20 +72,29 @@ html {
 body {
   background-color: var(--color-bg-base);
   min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
 }
 
-/* Desktop: keep overflow hidden for split-panel layout */
+/* Desktop: lock scroll for split-panel layout */
 @media (min-width: 1024px) {
-  body {
+  html, body {
     overflow: hidden;
+    height: 100vh;
   }
 }
 
-/* Mobile/Tablet: allow vertical scrolling */
+/* Mobile/Tablet: ensure scrolling works */
 @media (max-width: 1023px) {
-  body {
-    overflow: auto;
+  html {
+    overflow-y: auto;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 }
 

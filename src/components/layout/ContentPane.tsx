@@ -42,7 +42,7 @@ export function ContentPane({
   const accent = module.accentColor;
 
   return (
-    <div className="lg:h-full flex flex-col lg:overflow-hidden">
+    <div className="lg:h-full lg:flex lg:flex-col lg:overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={slide.id}
@@ -51,7 +51,7 @@ export function ContentPane({
           animate="animate"
           exit="exit"
           transition={transition}
-          className="flex-1 overflow-y-auto px-4 md:px-5 lg:px-8 py-5 md:py-6 lg:py-8"
+          className="lg:flex-1 lg:overflow-y-auto px-4 md:px-5 lg:px-8 py-5 md:py-6 lg:py-8"
         >
           {/* Eyebrow */}
           {slide.eyebrow && (

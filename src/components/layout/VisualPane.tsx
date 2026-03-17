@@ -14,9 +14,9 @@ export function VisualPane({ slide, module, locale }: VisualPaneProps) {
   const accent = module.accentColor;
 
   return (
-    <div className="relative min-h-[300px] sm:min-h-[400px] lg:min-h-0 lg:h-full rounded-xl lg:rounded-2xl border border-border-subtle bg-bg-surface overflow-hidden">
+    <div className="relative rounded-xl lg:rounded-2xl border border-border-subtle bg-bg-surface overflow-x-hidden lg:h-full">
       {/* Grid background */}
-      <div className="absolute inset-0 bg-grid opacity-40" />
+      <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
 
       {/* Accent glow — top-right corner */}
       <div
@@ -25,7 +25,7 @@ export function VisualPane({ slide, module, locale }: VisualPaneProps) {
       />
 
       {/* Visual content */}
-      <div className="relative z-10 h-full flex items-center justify-center p-2 md:p-3">
+      <div className="relative z-10 lg:h-full flex items-center justify-center p-3 md:p-4 min-h-[350px] sm:min-h-[420px] lg:min-h-0">
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.id}
@@ -33,7 +33,7 @@ export function VisualPane({ slide, module, locale }: VisualPaneProps) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.02 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full h-full flex items-center justify-center"
+            className="w-full flex items-center justify-center"
           >
             <VisualRenderer slide={slide} module={module} locale={locale} />
           </motion.div>
